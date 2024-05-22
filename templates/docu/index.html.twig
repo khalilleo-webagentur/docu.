@@ -33,105 +33,24 @@
 
 <div class="container my-5">
     <div class="row row-cols-1 row-cols-md-3 g-3">
-        <div class="col">
-            <a href="{{path('app_docu_details')}}" class="text-decoration-none">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
+
+        {% if count(catigories) > 0 %}
+            {% for row in catigories %}
+                <div class="col">
+                    <a href="{{path('app_docu_details')}}" class="text-decoration-none">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{row.name}}</h5>
+                                <p class="card-text">{{row.description}}</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="{{path('app_docu_details')}}" class="text-decoration-none">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="{{path('app_docu_details')}}" class="text-decoration-none">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="{{path('app_docu_details')}}" class="text-decoration-none">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="{{path('app_docu_details')}}" class="text-decoration-none">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="{{path('app_docu_details')}}" class="text-decoration-none">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="{{path('app_docu_details')}}" class="text-decoration-none">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="{{path('app_docu_details')}}" class="text-decoration-none">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col">
-            <a href="{{path('app_docu_details')}}" class="text-decoration-none">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
+            {% endfor %}
+        {% else %}
+            {% include 'docu/demo/dummy_catigories.html.twig' %}
+        {% endif %}
+
     </div>
 </div>
 

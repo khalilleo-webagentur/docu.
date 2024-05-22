@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Service\Docs;
 
 use App\Entity\Docu\Catigory;
 use App\Repository\Docu\CatigoryRepository;
+use DateTime;
 
 final class CatigoryService
 {
@@ -17,5 +18,22 @@ final class CatigoryService
     public function getById(int $id): ?Catigory
     {
         return $this->catigoryRepository->find($id);
+    }
+
+    public function getOneByName(string $name): ?Catigory
+    {
+        return $this->catigoryRepository->findOneBy(['name' => $name]);
+    }
+
+    public function getAll(): array
+    {
+        return $this->catigoryRepository->findAll();
+    }
+
+    public function save(Catigory $catigory): Catigory
+    {
+        $this->catigoryRepository->save($catigory->setUpdatedAt(new DateTime()), true);
+
+        return $catigory;
     }
 }
