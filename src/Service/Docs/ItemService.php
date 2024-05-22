@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Service\Docs;
 
 use App\Entity\Docu\Item;
 use App\Repository\Docu\ItemRepository;

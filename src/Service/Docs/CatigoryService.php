@@ -25,6 +25,11 @@ final class CatigoryService
         return $this->catigoryRepository->findOneBy(['name' => $name]);
     }
 
+    public function getFirstOne(): ?Catigory
+    {
+        return $this->catigoryRepository->findOneBy([], ['createdAt' => 'DESC']);
+    }
+
     public function getAll(): array
     {
         return $this->catigoryRepository->findAll();
