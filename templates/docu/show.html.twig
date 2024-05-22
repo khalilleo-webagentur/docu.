@@ -161,6 +161,12 @@
 
             <p>{{catigory.description}}</p>
 
+            {% for item in catigory.items %}
+                <div class="bg-white my-2">
+                    {{item.content}}
+                </div>
+            {% endfor %}
+
             <hr>
 
             <div class="row mb-3">
