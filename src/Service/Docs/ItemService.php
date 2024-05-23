@@ -20,6 +20,11 @@ final class ItemService
         return $this->itemRepository->find($id);
     }
 
+    public function getOneBySlug(string $slug): ? Item
+    {
+        return $this->itemRepository->findOneBy(['slug' => $slug]);
+    }
+
     public function save(Item $catigory): Item
     {
         $this->itemRepository->save($catigory->setUpdatedAt(new DateTime()), true);

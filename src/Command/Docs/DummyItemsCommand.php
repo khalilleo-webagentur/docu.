@@ -49,17 +49,13 @@ class DummyItemsCommand extends Command
                 $this->itemService->save(
                     $item
                         ->setCatigory($catigory)
-                        ->setSlug($faker->sentence(1))
+                        ->setSlug($faker->jobTitle())
                         ->setContent($faker->sentence(100))
                 );
 
                 $i++;
             }
-
-
         }
-
-        
 
         $output->writeln('DONE!');
 

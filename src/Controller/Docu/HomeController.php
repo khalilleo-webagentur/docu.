@@ -3,6 +3,7 @@
 namespace App\Controller\Docu;
 
 use App\Service\Docs\CatigoryService;
+use App\Service\Docs\ItemService;
 use App\Traits\FormValidationTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +14,8 @@ class HomeController extends AbstractController
     use FormValidationTrait;
 
     public function __construct(
-        private readonly CatigoryService $catigoryService
+        private readonly CatigoryService $catigoryService,
+        private readonly ItemService $itemService
     ) {
     }
 
@@ -38,8 +40,12 @@ class HomeController extends AbstractController
             $catigory = $this->catigoryService->getFirstOne();
         }
 
+        $catigories = $this->catigoryService->getAll();
+
         return $this->render('docu/show.html.twig', [
-            'catigory' => $catigory
+            'catigory' => $catigory,
+            'catigories' => $catigories,
+            'slug' => ''
         ]);
     }
 
@@ -47,5 +53,30 @@ class HomeController extends AbstractController
     public function show(): Response
     {
         return $this->render('docu/details.html.twig');
+    }
+
+    #[Route('/i/{slug}', name: 'app_docu_item_name')]
+    public function item(?string $slug): Response
+    {
+        $slug = $this->validate($slug);
+
+        $slug = str_replace('-', ' ', $slug);
+
+        $item = $this->itemService->getOneBySlug($slug);
+
+        $catigory = $this->catigoryService->getFirstOne();
+
+        if ($item) {
+            $catigory = $item->getCatigory();
+        }
+
+        $catigories = $this->catigoryService->getAll();
+
+        return $this->render('docu/show.html.twig', [
+            'item' => $item,
+            'catigory' => $catigory,
+            'catigories' => $catigories,
+            'slug' => $slug ?? ''
+        ]);
     }
 }

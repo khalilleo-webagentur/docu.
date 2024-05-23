@@ -44,7 +44,7 @@ class DummyCatigoriesCommand extends Command
 
             $this->catigoryService->save(
                 $catigory
-                    ->setName($faker->name())
+                    ->setName($faker->jobTitle())
                     ->setDescription($faker->sentence(20))
             );
 

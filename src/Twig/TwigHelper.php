@@ -21,6 +21,7 @@ class TwigHelper extends AbstractExtension
     public function getFunctions(): array
     {
         return [
+            new TwigFunction('slug', [$this, 'slug']),
             new TwigFunction('hash', [$this, 'hash']),
             new TwigFunction('timeAgo', [$this, 'timeAgo']),
             new TwigFunction('formatSizeUnits', [$this, 'formatSizeUnits']),
@@ -37,6 +38,11 @@ class TwigHelper extends AbstractExtension
             new TwigFunction('madeBy', [$this, 'getMadeBy']),
             new TwigFunction('version', [$this, 'getVersion']),
         ];
+    }
+
+    public function slug(string $text): string
+    {
+        return str_replace(' ', '-', rtrim($text, '.'));
     }
 
     public function hash(string $text): string
