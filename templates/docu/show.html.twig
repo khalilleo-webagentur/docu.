@@ -32,7 +32,7 @@
                 {% if count(catigories) > 0 %}
                 {% for row in catigories %}
 
-                <br><b class="{{row.name == catigory.name ? 'text-danger' : ''}}">{{row.name}}</b><br>
+                <br><b class="{{row.name == catigory.name ? 'text-dark' : 'text-secondary'}}">{{row.name}}</b><br>
 
                 {% for item in row.items %}
                 {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name', {slug:slug(item.slug)}) %}

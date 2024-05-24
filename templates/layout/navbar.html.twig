@@ -1,11 +1,13 @@
 <nav class="navbar bg-white">
   <div class="container-fluid">
-    <a href="{{app.request.schemeAndHttpHost}}" class="navbar-brand">{{appName()}}</a>
+    <a href="{{app.request.schemeAndHttpHost}}" class="navbar-brand">
+      <img src="{{asset('assets/img/logo.png')}}" alt="LOGO {{appName()}}" height="33"> {{appName()}}
+    </a>
     <div class="d-flex">
       {% if is_granted('ROLE_USER') %}
       <div class="btn-group">
-        <button type="button" class="btn btn-light dropdown-toggle text-secondary" data-bs-toggle="dropdown" data-bs-display="static"
-          aria-expanded="false">
+        <button type="button" class="btn btn-light dropdown-toggle text-secondary" data-bs-toggle="dropdown"
+          data-bs-display="static" aria-expanded="false">
           <span class="bi bi-person-circle pe-1"></span> {{app.user.name}}
         </button>
         <ul class="dropdown-menu dropdown-menu-lg-end">

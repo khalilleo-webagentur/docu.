@@ -22,17 +22,19 @@
     </div>
 </div>
 
-<div class="container my-5">
+<div class="container my-5 pb-5">
     <div class="row row-cols-1 row-cols-md-3 g-3">
 
         {% if count(catigories) > 0 %}
             {% for row in catigories %}
                 <div class="col">
                     <a href="{{path('app_docu_catigory_name', {name:row.name})}}" class="text-decoration-none">
-                        <div class="card h-100">
+                        <div class="card h-100 border-0 shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title">{{row.name}}</h5>
-                                <p class="card-text">{{row.description}}</p>
+                                <h5 class="card-title py-2">{{row.name}}</h5>
+                                <p class="card-text text-secondary">
+                                    {{row.description}} <span class="bi bi-arrow-right-circle-fill text-primary ps-2"></span>
+                                </p>
                             </div>
                         </div>
                     </a>
