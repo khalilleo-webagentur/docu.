@@ -40,12 +40,15 @@ class HomeController extends AbstractController
             $catigory = $this->catigoryService->getFirstOne();
         }
 
+        $item = $this->itemService->getFirstOneByCatigory($catigory);
+
         $catigories = $this->catigoryService->getAll();
 
         return $this->render('docu/show.html.twig', [
             'catigory' => $catigory,
             'catigories' => $catigories,
-            'slug' => ''
+            'item' => $item,
+            'slug' => $item ? $item->getSlug() : ''
         ]);
     }
 

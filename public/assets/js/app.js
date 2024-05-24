@@ -22,6 +22,45 @@ $(document).ready(function () {
      modal.on('shown.bs.modal', function () {
          $(this).find('[autofocus]').focus();
      });
+
+     if ($('.btnLike').length) {
+
+        let i = $('.btnLike').attr('data-id');
+
+        console.log(i);
+
+        if (isLocalStorageAvailable && window.localStorage.getItem('LIKE'+i) === '1') {
+            $('.btnLike').prop('disabled', 'true');
+            console.log('already liked ..')
+        }
+
+        $('.btnLike').on('click', function () {
+            let i = $('.btnLike').attr('data-id');
+            if (isLocalStorageAvailable) {
+               window.localStorage.setItem('LIKE'+i, '1')
+            }
+        });
+    }
+
+    if ($('.btnDisLike').length) {
+
+        let i = $('.btnDisLike').attr('data-id');
+
+        console.log(i);
+
+        if (isLocalStorageAvailable && window.localStorage.getItem('DIS_LIKE'+i) === '1') {
+            $('.btnDisLike').prop('disabled', 'true');
+            console.log('already liked ..')
+        }
+
+        $('.btnDisLike').on('click', function () {
+            let i = $('.btnDisLike').attr('data-id');
+            if (isLocalStorageAvailable) {
+               window.localStorage.setItem('DIS_LIKE'+i, '1')
+               window.localStorage.removeItem('LIKE'+i);
+            }
+        });
+    }
 });
 
 function isLocalStorageAvailable() { return typeof (Storage) !== "undefined" }

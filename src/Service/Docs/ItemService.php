@@ -20,6 +20,11 @@ final class ItemService
         return $this->itemRepository->find($id);
     }
 
+    public function getFirstOneByCatigory($catigory): ?Item
+    {
+        return $this->itemRepository->findOneBy(['catigory' => $catigory], ['id' => 'ASC']);
+    }
+
     public function getOneBySlug(string $slug): ? Item
     {
         return $this->itemRepository->findOneBy(['slug' => $slug]);
