@@ -27,17 +27,14 @@ $(document).ready(function () {
 
         let i = $('.btnLike').attr('data-id');
 
-        console.log(i);
-
         if (isLocalStorageAvailable && window.localStorage.getItem('LIKE'+i) === '1') {
             $('.btnLike').prop('disabled', 'true');
-            console.log('already liked ..')
         }
 
         $('.btnLike').on('click', function () {
             let i = $('.btnLike').attr('data-id');
             if (isLocalStorageAvailable) {
-               window.localStorage.setItem('LIKE'+i, '1')
+               window.localStorage.setItem('LIKE'+i, '1');
             }
         });
     }
@@ -46,11 +43,8 @@ $(document).ready(function () {
 
         let i = $('.btnDisLike').attr('data-id');
 
-        console.log(i);
-
         if (isLocalStorageAvailable && window.localStorage.getItem('DIS_LIKE'+i) === '1') {
             $('.btnDisLike').prop('disabled', 'true');
-            console.log('already liked ..')
         }
 
         $('.btnDisLike').on('click', function () {
