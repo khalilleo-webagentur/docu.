@@ -38,7 +38,7 @@ class DummyCatigoriesCommand extends Command
 
         $i = 0;
 
-        while ($i <= 8) {
+        while ($i <= 20) {
 
             $catigory = new Catigory();
 

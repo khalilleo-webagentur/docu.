@@ -42,7 +42,7 @@ class DummyItemsCommand extends Command
 
             $i = 0;
 
-            while ($i <= 5) {
+            while ($i <= 4) {
 
                 $item = new Item();
 
@@ -50,7 +50,7 @@ class DummyItemsCommand extends Command
                     $item
                         ->setCatigory($catigory)
                         ->setSlug($faker->jobTitle())
-                        ->setContent($faker->sentence(100))
+                        ->setContent($faker->sentence(500))
                 );
 
                 $i++;

@@ -17,7 +17,7 @@
         <div class="row py-2 justify-content-center text-center">
             <div class="col-lg-6">
                 <div class="d-block mx-auto">
-                   {% include 'docu/partial/search_form.html.twig' %}
+                    {% include 'docu/partial/search_form.html.twig' %}
                 </div>
             </div>
         </div>
@@ -28,15 +28,16 @@
     <div class="row pb-5">
         <div class="col-lg-3 mb-3">
 
-            <div class="bg-white p-2 overflow-auto px-3" style="height: 71vh;">
+            <div class="bg-white p-2 overflow-auto px-3 sticky-top" style="height: 71vh;">
                 {% if count(catigories) > 0 %}
                 {% for row in catigories %}
 
                 <br><b class="{{row.name == catigory.name ? 'text-dark' : 'text-secondary'}}">{{row.name}}</b><br>
 
                 {% for item in row.items %}
-                {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name', {slug:slug(item.slug)}) %}
-                
+                {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name',
+                {slug:slug(item.slug)}) %}
+
                 <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}"
                     class="text-decoration-none {{_uri == _currentTab or item.slug == slug ? 'text-danger' : 'text-primary'}} fs-14">
                     <span class="bi bi-dash-lg pe-1 ps-2"></span> {{item.slug}}
@@ -50,43 +51,50 @@
         </div>
         <div class="col-lg-6 mb-3">
 
-            <h4>{{catigory.name}} <small class="bi bi-chevron-double-right text-secondary"></small> {{slug}}</h4>
+            <div class="p-2 bg-white">
 
-            <p class="text-secondary">{{catigory.description}}</p>
+                <div class="px-lg-3">
+                    <p class="pb-2"><small class="float-end text-secondary pe-2">
+                        {{ _itemDefined ? 'Last updated: ' ~ item.updatedAt|date('d.m.Y') : '' }}</small>
+                    </p>
 
-            {% if item is defined and item %}
-            <div class="p-2">
-                {{item.content}}
+                    <h5 class="pt-3">{{catigory.name}} <span class="bi bi-chevron-double-right text-secondary"></span>
+                        {{slug}}</h5>
+                    <p class="text-secondary">{{catigory.description}}</p>
+
+                </div>
+
+                {% if item is defined and item %}
+                <div class="p-2 px-lg-3">
+                    {{item.content}}
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
 
-            <hr class="bg-light">
-
-            <div class="row mb-3">
+            <div class="row mb-3 pt-3">
                 <div class="col">
-                    <a href="#" class="text-decoration-none text-secondary small">
-                        <span class="bi bi-arrow-left-circle-fill pe-1"></span> Privious
+                    <a href="#" class="text-decoration-none text-secondary small ps-1">
+                        <span class="bi bi-arrow-left-circle-fill pe-1 text-primary"></span> Privious
                     </a>
                 </div>
                 <div class="col">
-                    <div class="float-end">
+                    <div class="float-end pe-1">
                         <a href="#" class="text-decoration-none text-secondary small">
-                            Next <span class="bi bi-arrow-right-circle-fill ps-1"></span>
+                            Next <span class="bi bi-arrow-right-circle-fill ps-1 text-primary"></span>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="row text-center bg-white py-5">
+            <div class="row text-center bg-white py-5 mx-1">
                 <div class="col">
                     <h5 class="mb-3">Was this article helpful?</h5>
-
                     <div class="row">
                         <div class="col-6 text-end">
                             <form action="{{path('app_docu_item_rate_store')}}" method="post">
                                 <button class="btn btn-success w-50 btnLike" style="border-radius: 0;" type="submit"
                                     data-id="{{_itemDefined ? item.id : 0}}">
-                                    <span class="bi bi-hand-thumbs-up"></span> <span class="ps-2">({{_itemDefined ?
+                                    <span class="bi bi-hand-thumbs-up-fill"></span> <span class="ps-2">({{_itemDefined ?
                                         item.likes : 0}})</span>
                                 </button>
                                 <input type="hidden" name="id" value="{{_itemDefined ? item.id : 0}}">
@@ -98,7 +106,7 @@
                             <form action="{{path('app_docu_item_rate_store')}}" method="post">
                                 <button class="btn btn-danger w-50 btnDisLike" style="border-radius: 0;" type="submit"
                                     data-id="{{_itemDefined ? item.id : 0}}">
-                                    <span class="bi bi-hand-thumbs-down"></span> <span class="ps-2">({{_itemDefined ?
+                                    <span class="bi bi-hand-thumbs-down-fill"></span> <span class="ps-2">({{_itemDefined ?
                                         item.disLikes : 0}})</span>
                                 </button>
                                 <input type="hidden" name="id" value="{{_itemDefined ? item.id : 0}}">
@@ -113,10 +121,10 @@
         </div>
 
         <div class="col-lg-3">
-            <div class="md-d-none py-4 bg-white px-3">
+            <div class="md-d-none py-4 bg-white px-3 sticky-top">
                 {% for item in catigory.items %}
                 <div class="p-1">
-                    <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}" class="text-decoration-none fs-12">
+                    <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}" class="text-decoration-none fs-14">
                         {{item.slug}}
                     </a>
                 </div>
