@@ -1,6 +1,8 @@
 {% extends 'layout/base.html.twig' %}
 
-{% block title %} {{appName()}} :: {{catigory.name}} {% endblock %}
+{% set _itemDefined = item is defined and item %}
+
+{% block title %} {{appName()}} :: {{catigory.name}} {{_itemDefined ? ' - ' ~ item.slug : ''}} {% endblock %}
 
 {% block body %}
 
@@ -9,8 +11,6 @@
 {% include 'component/custom_type_message_top_fixed.html.twig' %}
 
 {% set _uri = app.request.uri %}
-
-{% set _itemDefined = item is defined and item %}
 
 <div class="container-fluid bg-warning">
     <div class="container pt-3">

@@ -28,7 +28,7 @@
         {% if count(catigories) > 0 %}
             {% for row in catigories %}
                 <div class="col">
-                    <a href="{{path('app_docu_catigory_name', {name:row.name})}}" class="text-decoration-none">
+                    <a href="{{path('app_docu_catigory_name', {name:slug(row.name)})}}" class="text-decoration-none">
                         <div class="card h-100 border-0 shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title py-2">{{row.name}}</h5>
