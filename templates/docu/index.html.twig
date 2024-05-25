@@ -23,7 +23,7 @@
 </div>
 
 <div class="container my-5 pb-5">
-    <div class="row row-cols-1 row-cols-md-3 g-3">
+    <div class="row row-cols-1 row-cols-lg-3 g-3">
 
         {% if count(catigories) > 0 %}
             {% for row in catigories %}
@@ -33,7 +33,7 @@
                             <div class="card-body">
                                 <h5 class="card-title py-2">{{row.name}}</h5>
                                 <p class="card-text text-secondary">
-                                    {{row.description}} <span class="bi bi-arrow-right-circle-fill text-primary ps-2"></span>
+                                    {{row.description}} <span class="bi bi-arrow-right-circle text-primary ps-2"></span>
                                 </p>
                             </div>
                         </div>

@@ -30,21 +30,21 @@
 
             <div class="bg-white p-2 overflow-auto px-3 sticky-top" style="height: 71vh;">
                 {% if count(catigories) > 0 %}
-                {% for row in catigories %}
+                    {% for row in catigories %}
 
-                <br><b class="{{row.name == catigory.name ? 'text-dark' : 'text-secondary'}}">{{row.name}}</b><br>
+                    <br><b class="{{row.name == catigory.name ? 'text-dark' : 'text-secondary'}}" id="{{hash(catigory.name)}}">{{row.name}}</b><br>
 
-                {% for item in row.items %}
-                {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name',
-                {slug:slug(item.slug)}) %}
+                    {% for item in row.items %}
+                        {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name',
+                        {slug:slug(item.slug)}) %}
 
-                <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}"
-                    class="text-decoration-none {{_uri == _currentTab or item.slug == slug ? 'text-danger' : 'text-primary'}} fs-14">
-                    <span class="bi bi-dash-lg pe-1 ps-2"></span> {{item.slug}}
-                </a><br>
-                {% endfor %}
+                        <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}#{{hash(catigory.name)}}"
+                            class="text-decoration-none {{_uri == _currentTab or item.slug == slug ? 'text-danger' : 'text-primary'}} fs-14">
+                            <span class="bi bi-dash-lg pe-1 ps-2"></span> {{item.slug}}
+                        </a><br>
+                    {% endfor %}
 
-                {% endfor %}
+                    {% endfor %}
                 {% endif %}
             </div>
 
