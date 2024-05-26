@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command\Docs;
 
-use App\Entity\Docu\Catigory;
+use App\Entity\Docu\DocuCatigory;
 use App\Service\Docs\CatigoryService;
 use Faker\Factory;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -40,7 +40,7 @@ class DummyCatigoriesCommand extends Command
 
         while ($i <= 20) {
 
-            $catigory = new Catigory();
+            $catigory = new DocuCatigory();
 
             $this->catigoryService->save(
                 $catigory

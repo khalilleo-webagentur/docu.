@@ -4,28 +4,28 @@ declare(strict_types=1);
 
 namespace App\Service\Docs;
 
-use App\Entity\Docu\Catigory;
-use App\Repository\Docu\CatigoryRepository;
+use App\Entity\Docu\DocuCatigory;
+use App\Repository\Docu\DocuCatigoryRepository;
 use DateTime;
 
 final class CatigoryService
 {
     public function __construct(
-        private readonly CatigoryRepository $catigoryRepository
+        private readonly DocuCatigoryRepository $catigoryRepository
     ) {
     }
 
-    public function getById(int $id): ?Catigory
+    public function getById(int $id): ?DocuCatigory
     {
         return $this->catigoryRepository->find($id);
     }
 
-    public function getOneByName(string $name): ?Catigory
+    public function getOneByName(string $name): ?DocuCatigory
     {
         return $this->catigoryRepository->findOneBy(['name' => $name]);
     }
 
-    public function getFirstOne(): ?Catigory
+    public function getFirstOne(): ?DocuCatigory
     {
         return $this->catigoryRepository->findOneBy([], ['createdAt' => 'DESC']);
     }
@@ -35,7 +35,7 @@ final class CatigoryService
         return $this->catigoryRepository->findBy([], ['id' => 'DESC']);
     }
 
-    public function save(Catigory $catigory): Catigory
+    public function save(DocuCatigory $catigory): DocuCatigory
     {
         $this->catigoryRepository->save($catigory->setUpdatedAt(new DateTime()), true);
 

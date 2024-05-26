@@ -2,13 +2,13 @@
 
 namespace App\Entity\Docu;
 
-use App\Repository\Docu\ItemRepository;
+use App\Repository\Docu\DocuItemRepository;
 use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ItemRepository::class)]
-class Item
+#[ORM\Entity(repositoryClass: DocuItemRepository::class)]
+class DocuItem
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,7 +17,7 @@ class Item
 
     #[ORM\ManyToOne(inversedBy: 'items')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Catigory $catigory = null;
+    private ?DocuCatigory $catigory = null;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
@@ -47,12 +47,12 @@ class Item
         return $this->id;
     }
 
-    public function getCatigory(): ?Catigory
+    public function getCatigory(): ?DocuCatigory
     {
         return $this->catigory;
     }
 
-    public function setCatigory(?Catigory $catigory): static
+    public function setCatigory(?DocuCatigory $catigory): static
     {
         $this->catigory = $catigory;
 

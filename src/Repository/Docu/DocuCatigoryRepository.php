@@ -2,21 +2,21 @@
 
 namespace App\Repository\Docu;
 
-use App\Entity\Docu\Catigory;
+use App\Entity\Docu\DocuCatigory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Catigory>
+ * @extends ServiceEntityRepository<DocuCatigory>
  */
-class CatigoryRepository extends ServiceEntityRepository
+class DocuCatigoryRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Catigory::class);
+        parent::__construct($registry, DocuCatigory::class);
     }
 
-    public function save(Catigory $entity, bool $flush = false): void
+    public function save(DocuCatigory $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -25,7 +25,7 @@ class CatigoryRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Catigory $entity, bool $flush = false): void
+    public function remove(DocuCatigory $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -35,7 +35,7 @@ class CatigoryRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Catigory[] Returns an array of Catigory objects
+//     * @return DocuCatigory[] Returns an array of DocuCatigory objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -49,7 +49,7 @@ class CatigoryRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Catigory
+//    public function findOneBySomeField($value): ?DocuCatigory
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

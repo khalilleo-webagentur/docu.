@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Entity\User;
-use App\Entity\UserSetting;
 use App\Service\TokenGeneratorService;
 use App\Service\UserService;
-use App\Service\UserSettingService;
 use Faker\Factory;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -29,8 +27,7 @@ class NewAdminCommand extends Command
 
     public function __construct(
         private readonly UserService $userService,
-        private readonly TokenGeneratorService $tokenGeneratorService,
-        private readonly UserSettingService $userSettingService
+        private readonly TokenGeneratorService $tokenGeneratorService
     ) {
         parent::__construct();
     }
@@ -58,10 +55,6 @@ class NewAdminCommand extends Command
                     ->setIsVerified(true)
                     ->setToken($code)
             );
-
-            $userSetting = new UserSetting();
-
-            $this->userSettingService->save($userSetting->setUser($user));
 
             $output->writeln(sprintf('Admin added. E:: %s and OTP:: %s', $email, $code));
 

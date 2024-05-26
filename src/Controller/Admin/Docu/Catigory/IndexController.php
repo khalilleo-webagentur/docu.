@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin\Docu\Catigory;
 
-use App\Entity\Docu\Catigory;
+use App\Entity\Docu\DocuCatigory;
 use App\Service\Docs\CatigoryService;
 use App\Service\Docs\ItemService;
 use App\Traits\FormValidationTrait;
@@ -60,7 +60,7 @@ class IndexController extends AbstractController
             return $this->redirectToRoute(self::ADMIN_DOCU_CATIGORIES_ROUTE);
         }
 
-        $catigory = new Catigory();
+        $catigory = new DocuCatigory();
 
         $this->catigoryService->save(
             $catigory

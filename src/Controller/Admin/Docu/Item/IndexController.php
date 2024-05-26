@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin\Docu\Item;
 
-use App\Entity\Docu\Item;
+use App\Entity\Docu\DocuItem;
 use App\Service\Docs\CatigoryService;
 use App\Service\Docs\ItemService;
 use App\Traits\FormValidationTrait;
@@ -69,11 +69,11 @@ class IndexController extends AbstractController
         );
 
         if (!$catigory) {
-            $this->addFlash('warning', 'Catigory associated with item could not be found.');
+            $this->addFlash('warning', 'DocuCatigory associated with item could not be found.');
             return $this->redirectToRoute(self::ADMIN_DOCU_ITEMS_ROUTE);
         }
 
-        $item = new Item();
+        $item = new DocuItem();
 
         $this->itemService->save(
             $item
@@ -132,7 +132,7 @@ class IndexController extends AbstractController
         );
 
         if (!$catigory) {
-            $this->addFlash('warning', 'Catigory associated with item could not be found.');
+            $this->addFlash('warning', 'DocuCatigory associated with item could not be found.');
             return $this->redirectToRoute(self::ADMIN_DOCU_ITEMS_ROUTE);
         }
 

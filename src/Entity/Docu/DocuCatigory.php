@@ -2,15 +2,15 @@
 
 namespace App\Entity\Docu;
 
-use App\Repository\Docu\CatigoryRepository;
+use App\Repository\Docu\DocuCatigoryRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CatigoryRepository::class)]
-class Catigory
+#[ORM\Entity(repositoryClass: DocuCatigoryRepository::class)]
+class DocuCatigory
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -30,9 +30,9 @@ class Catigory
     private ?\DateTimeInterface $createdAt = null;
 
     /**
-     * @var Collection<int, Item>
+     * @var Collection<int, DocuItem>
      */
-    #[ORM\OneToMany(targetEntity: Item::class, mappedBy: 'catigory')]
+    #[ORM\OneToMany(targetEntity: DocuItem::class, mappedBy: 'catigory')]
     private Collection $items;
 
     public function __construct()
@@ -95,14 +95,14 @@ class Catigory
     }
 
     /**
-     * @return Collection<int, Item>
+     * @return Collection<int, DocuItem>
      */
     public function getItems(): Collection
     {
         return $this->items;
     }
 
-    public function addItem(Item $item): static
+    public function addItem(DocuItem $item): static
     {
         if (!$this->items->contains($item)) {
             $this->items->add($item);
@@ -112,7 +112,7 @@ class Catigory
         return $this;
     }
 
-    public function removeItem(Item $item): static
+    public function removeItem(DocuItem $item): static
     {
         if ($this->items->removeElement($item)) {
             // set the owning side to null (unless already changed)

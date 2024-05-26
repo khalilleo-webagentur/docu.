@@ -2,21 +2,21 @@
 
 namespace App\Repository\Docu;
 
-use App\Entity\Docu\Item;
+use App\Entity\Docu\DocuItem;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Item>
+ * @extends ServiceEntityRepository<DocuItem>
  */
-class ItemRepository extends ServiceEntityRepository
+class DocuItemRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Item::class);
+        parent::__construct($registry, DocuItem::class);
     }
 
-    public function save(Item $entity, bool $flush = false): void
+    public function save(DocuItem $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -25,7 +25,7 @@ class ItemRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Item $entity, bool $flush = false): void
+    public function remove(DocuItem $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -35,7 +35,7 @@ class ItemRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Item[] Returns an array of Item objects
+//     * @return DocuItem[] Returns an array of DocuItem objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -49,7 +49,7 @@ class ItemRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Item
+//    public function findOneBySomeField($value): ?DocuItem
 //    {
 //        return $this->createQueryBuilder('i')
 //            ->andWhere('i.exampleField = :val')

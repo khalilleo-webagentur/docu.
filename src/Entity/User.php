@@ -48,12 +48,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?\DateTimeInterface $createdAt = null;
 
     /**
-     * @var Collection<int, UserSetting>
-     */
-    #[ORM\OneToMany(targetEntity: UserSetting::class, mappedBy: 'user', orphanRemoval: true)]
-    private Collection $userSettings;
-
-    /**
      * @var Collection<int, TempUser>
      */
     #[ORM\OneToMany(targetEntity: TempUser::class, mappedBy: 'user')]
@@ -62,7 +56,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->setCreatedAt(new DateTime());
-        $this->userSettings = new ArrayCollection();
         $this->tempUsers = new ArrayCollection();
     }
 
@@ -194,36 +187,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
         $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, UserSetting>
-     */
-    public function getUserSettings(): Collection
-    {
-        return $this->userSettings;
-    }
-
-    public function addUserSetting(UserSetting $userSetting): static
-    {
-        if (!$this->userSettings->contains($userSetting)) {
-            $this->userSettings->add($userSetting);
-            $userSetting->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUserSetting(UserSetting $userSetting): static
-    {
-        if ($this->userSettings->removeElement($userSetting)) {
-            // set the owning side to null (unless already changed)
-            if ($userSetting->getUser() === $this) {
-                $userSetting->setUser(null);
-            }
-        }
 
         return $this;
     }
