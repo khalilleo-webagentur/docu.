@@ -50,7 +50,7 @@
 
                             <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}#{{hash(catigory.name)}}"
                                 class="text-decoration-none {{_uri == _currentTab or item.slug == slug ? 'text-danger' : 'text-primary'}} fs-14">
-                                <span class="bi bi-dash-lg pe-1 ps-2"></span> {{item.slug}}
+                                <span class="bi bi-dot pe-1 ps-2"></span> {{item.slug}}
                             </a><br>
                         {% endfor %}
 
@@ -65,13 +65,30 @@
             <div class="p-2 bg-white">
 
                 <div class="px-lg-3">
-                    <p class="pb-2"><small class="float-end text-secondary pe-2">
-                        {{ _itemDefined ? 'Last updated: ' ~ item.updatedAt|date('d.m.Y') : '' }}</small>
-                    </p>
+                    
+                    {% if _itemDefined %}
+                    <div class="row">
+                        <div class="col">
+                            <p class="pb-2">
+                                <small class="ext-secondary pe-2">
+                                    Last updated: {{ item.updatedAt|date('d.m.Y')}}
+                                </small>
+                            </p>
+                        </div>
+                        <div class="col">
+                            <div class="float-end">
+                                <small class="bi bi-clock small text-secondary"></small>
+                                <span class="small text-secondary">3 min.</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
 
-                    <h5 class="pt-3">{{catigory.name}} <span class="bi bi-chevron-double-right text-secondary"></span>
-                        {{slug}}</h5>
-                    <p class="text-secondary">{{catigory.description}}</p>
+                    <h4 class="pt-2">
+                        {{catigory.name}} <span class="bi bi-chevron-double-right text-secondary"></span> {{slug}}
+                    </h4>
+                    
+                    <p class="text-secondary mb-1">{{catigory.description}}</p>
 
                 </div>
 
