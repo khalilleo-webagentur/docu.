@@ -1,0 +1,62 @@
+{% extends 'admin/layout/base.html.twig' %}
+
+{% block title %} Dashboard :: Edit Catigory Details {% endblock %}
+
+{% block body %}
+
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4 class="m-0 text-dark">Edit Catigory Details</h4>
+                    <p class="text-secondary">
+                        This catigory has ({{itemsCount}}) items accociated with it.
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <a href="{{path('app_admin_docu_catigories_index')}}" class="text-secondary">
+                            Close <span class="fa fa-window-close"></span>
+                        </a>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <form action="{{path('app_admin_docu_catigory_store', {id:catigory.id})}}" method="post">
+
+                        <div class="mb-3">
+                            <label for="V9xO3aD7v" class="form-label">Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="V9xO3aD7v" placeholder="Type name"
+                                value="{{catigory.name}}" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="2hV9xO3aD7v" class="form-label">Description <span
+                                    class="text-danger">*</span></label>
+                            <textarea type="text" class="form-control" id="2hV9xO3aD7v" placeholder="Type Description"
+                                rows="7" name="description">{{catigory.description}}</textarea>
+                        </div>
+
+
+                        <div class="my-3">
+                            <button class="btn btn-success">Save Changes<span
+                                    class="fa fa-check-circle fa-sm pl-1"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+{% endblock %}

@@ -32,7 +32,7 @@ final class CatigoryService
 
     public function getAll(): array
     {
-        return $this->catigoryRepository->findAll();
+        return $this->catigoryRepository->findBy([], ['id' => 'DESC']);
     }
 
     public function save(Catigory $catigory): Catigory

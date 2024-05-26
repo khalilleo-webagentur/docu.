@@ -41,9 +41,7 @@ class IndexController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN');
 
-        $user = $this->userService->getById(
-            $this->validateNumber($id)
-        );
+        $user = $this->userService->getById($this->validateNumber($id));
 
         if (!$user) {
             $this->addFlash('warning', 'User could not be found.');
@@ -71,9 +69,7 @@ class IndexController extends AbstractController
 
         $token = $this->validate($request->request->get('token'));
 
-        $user = $this->userService->getById(
-            $this->validateNumber($id)
-        );
+        $user = $this->userService->getById($this->validateNumber($id));
 
         if (!$user) {
             $this->addFlash('warning', 'User could not be found.');

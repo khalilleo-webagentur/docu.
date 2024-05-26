@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Docs;
 
+use App\Entity\Docu\Catigory;
 use App\Entity\Docu\Item;
 use App\Repository\Docu\ItemRepository;
 use DateTime;
@@ -20,9 +21,14 @@ final class ItemService
         return $this->itemRepository->find($id);
     }
 
-    public function getFirstOneByCatigory($catigory): ?Item
+    public function getFirstOneByCatigory(Catigory $catigory): ?Item
     {
         return $this->itemRepository->findOneBy(['catigory' => $catigory], ['id' => 'ASC']);
+    }
+
+    public function getAllByCatigory(Catigory $catigory): array
+    {
+        return $this->itemRepository->findBy(['catigory' => $catigory], ['id' => 'ASC']);
     }
 
     public function getOneBySlug(string $slug): ? Item
