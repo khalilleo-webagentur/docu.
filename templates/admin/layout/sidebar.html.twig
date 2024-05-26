@@ -32,11 +32,28 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="{{path('app_admin_docu_catigories_index')}}" class="nav-link">
-                        <i class="fas fa-tasks nav-icon"></i>
-                        <p>Catigories</p>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tasks"></i>
+                        <p>
+                            Documentation
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{path('app_admin_docu_catigories_index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon text-secondary"></i>
+                                <p>Catigories</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon text-secondary"></i>
+                                <p>Items</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item has-treeview">
@@ -65,12 +82,7 @@
                 </li>
 
                 <li class="nav-header">EXTRA</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>Documentation</p>
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-file"></i>
