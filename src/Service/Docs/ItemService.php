@@ -26,6 +26,11 @@ final class ItemService
         return $this->itemRepository->findOneBy(['catigory' => $catigory], ['id' => 'ASC']);
     }
 
+    public function getAll(): array
+    {
+        return $this->itemRepository->findBy([], ['id' => 'DESC']);
+    }
+
     public function getAllByCatigory(Catigory $catigory): array
     {
         return $this->itemRepository->findBy(['catigory' => $catigory], ['id' => 'ASC']);
