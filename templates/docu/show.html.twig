@@ -29,22 +29,33 @@
         <div class="col-lg-3 mb-3">
 
             <div class="bg-white p-2 overflow-auto px-3 sticky-top" style="height: 71vh;">
+
+                <br>
+
                 {% if count(catigories) > 0 %}
+                    
                     {% for row in catigories %}
 
-                    <br><b class="{{row.name == catigory.name ? 'text-dark' : 'text-secondary'}}" id="{{hash(catigory.name)}}">{{row.name}}</b><br>
+                        {% if count(row.items) > 0 %}
+                        <p class="mb-0 pt-1">
+                            <b class="{{row.name == catigory.name ? 'text-dark' : 'text-secondary'}}" id="{{hash(catigory.name)}}">
+                                {{row.name}}
+                            </b>
+                        </p>
+                        {% endif %}
 
-                    {% for item in row.items %}
-                        {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name',
-                        {slug:slug(item.slug)}) %}
+                        {% for item in row.items %}
 
-                        <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}#{{hash(catigory.name)}}"
-                            class="text-decoration-none {{_uri == _currentTab or item.slug == slug ? 'text-danger' : 'text-primary'}} fs-14">
-                            <span class="bi bi-dash-lg pe-1 ps-2"></span> {{item.slug}}
-                        </a><br>
+                            {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name', {slug:slug(item.slug)}) %}
+
+                            <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}#{{hash(catigory.name)}}"
+                                class="text-decoration-none {{_uri == _currentTab or item.slug == slug ? 'text-danger' : 'text-primary'}} fs-14">
+                                <span class="bi bi-dash-lg pe-1 ps-2"></span> {{item.slug}}
+                            </a><br>
+                        {% endfor %}
+
                     {% endfor %}
 
-                    {% endfor %}
                 {% endif %}
             </div>
 
@@ -123,8 +134,10 @@
         <div class="col-lg-3">
             <div class="md-d-none py-4 bg-white px-3 sticky-top">
                 {% for item in catigory.items %}
+                {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name', {slug:slug(item.slug)}) %}
                 <div class="p-1">
-                    <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}" class="text-decoration-none fs-14">
+                    <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}"
+                        class="text-decoration-none fs-14 {{_currentTab == _uri ? 'text-dark' : 'text-secondary'}}">
                         {{item.slug}}
                     </a>
                 </div>
