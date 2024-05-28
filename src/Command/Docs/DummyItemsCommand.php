@@ -51,6 +51,7 @@ class DummyItemsCommand extends Command
                         ->setCatigory($catigory)
                         ->setSlug($faker->jobTitle())
                         ->setContent($faker->sentence(500))
+                        ->setReadTime($faker->numberBetween(1,12) . ' min.')
                 );
 
                 $i++;

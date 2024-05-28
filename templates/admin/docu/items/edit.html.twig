@@ -39,13 +39,25 @@
                                         value="{{item.slug}}" name="slug" required>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="mb-3">
                                     <label for="iwO7nM4yT4bG2sO5i">Catigory <span class="text-danger">*</span></label>
                                     <select class="form-control" id="iwO7nM4yT4bG2sO5i" name="catigoryId">
                                         {% for key, row in catigories %}
                                         <option value="{{ row.id }}" {{item.catigory.name==row.name ? 'selected' : ''}}>
                                             {{ row.name}}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-1">
+                                <div class="mb-3">
+                                    <label for="kkwO7nM4yT4bG2sO5i">Read Time <span class="text-danger">*</span></label>
+                                    <select class="form-control" id="kkwO7nM4yT4bG2sO5i" name="readTime">
+                                        {% for key, readTime in readTimes %}
+                                        <option value="{{ readTime }}" {{readTime==item.readTime ? 'selected' : ''}}>
+                                            {{ readTime }}
                                         </option>
                                         {% endfor %}
                                     </select>

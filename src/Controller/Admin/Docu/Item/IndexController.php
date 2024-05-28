@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin\Docu\Item;
 
 use App\Entity\Docu\DocuItem;
+use App\Helper\DocuHelper;
 use App\Service\Docs\CatigoryService;
 use App\Service\Docs\ItemService;
 use App\Traits\FormValidationTrait;
@@ -46,8 +47,11 @@ class IndexController extends AbstractController
 
         $catigories = $this->catigoryService->getAll();
 
+        $readTimes = DocuHelper::AVAILABE_READ_TIMES;
+
         return $this->render('admin/docu/items/new.html.twig', [
-            'catigories' => $catigories
+            'catigories' => $catigories,
+            'readTimes' => $readTimes,
         ]);
     }
 
@@ -73,6 +77,12 @@ class IndexController extends AbstractController
             return $this->redirectToRoute(self::ADMIN_DOCU_ITEMS_ROUTE);
         }
 
+        $readTime = $this->validate($request->request->get('readTime'));
+
+        if (!in_array($readTime, DocuHelper::AVAILABE_READ_TIMES, true)) {
+            $readTime = DocuHelper::DEFAULT_READ_TIME;
+        }
+
         $item = new DocuItem();
 
         $this->itemService->save(
@@ -80,6 +90,7 @@ class IndexController extends AbstractController
                 ->setCatigory($catigory)
                 ->setSlug($slug)
                 ->setContent($content)
+                ->setReadTime($readTime)
         );
 
         $this->addFlash('success', 'New item has been added.');
@@ -101,9 +112,12 @@ class IndexController extends AbstractController
 
         $catigories = $this->catigoryService->getAll();
 
+        $readTimes = DocuHelper::AVAILABE_READ_TIMES;
+
         return $this->render('admin/docu/items/edit.html.twig', [
             'item' => $item,
-            'catigories' => $catigories
+            'catigories' => $catigories,
+            'readTimes' => $readTimes,
         ]);
     }
 
@@ -139,6 +153,12 @@ class IndexController extends AbstractController
         $likes = $this->validateNumber($request->request->get('likes'));
         $disLikes = $this->validateNumber($request->request->get('disLikes'));
 
+        $readTime = $this->validate($request->request->get('readTime'));
+
+        if (!in_array($readTime, DocuHelper::AVAILABE_READ_TIMES, true)) {
+            $readTime = DocuHelper::DEFAULT_READ_TIME;
+        }
+
         $this->itemService->save(
             $item
                 ->setCatigory($catigory)
@@ -146,6 +166,7 @@ class IndexController extends AbstractController
                 ->setContent($content)
                 ->setLikes($likes)
                 ->setDisLikes($disLikes)
+                ->setReadTime($readTime)
         );
 
         $this->addFlash('success', 'Changes has been saved.');

@@ -2,6 +2,7 @@
 
 namespace App\Entity\Docu;
 
+use App\Helper\DocuHelper;
 use App\Repository\Docu\DocuItemRepository;
 use DateTime;
 use Doctrine\DBAL\Types\Types;
@@ -24,6 +25,9 @@ class DocuItem
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
+
+    #[ORM\Column(length: 10)]
+    private string $readTime = DocuHelper::DEFAULT_READ_TIME;
 
     #[ORM\Column]
     private int $likes = 0;
@@ -79,6 +83,18 @@ class DocuItem
     public function setContent(string $content): static
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getReadTime(): string
+    {
+        return $this->readTime;
+    }
+
+    public function setReadTime(string $readTime): static
+    {
+        $this->readTime = $readTime;
 
         return $this;
     }
