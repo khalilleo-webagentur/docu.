@@ -42,7 +42,7 @@ class DummyItemsCommand extends Command
 
             $i = 0;
 
-            while ($i <= 4) {
+            while ($i <= 3) {
 
                 $item = new DocuItem();
 
