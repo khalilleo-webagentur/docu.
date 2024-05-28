@@ -24,7 +24,23 @@
     </div>
 </div>
 
-<div class="container my-5">
+<div class="container-fluid pt-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="ps-2">
+                    <small>
+                        Docu <span class="bi bi-chevron-double-right text-secondary"></span> 
+                        {{catigory.name}} <span class="bi bi-chevron-double-right text-secondary"></span> 
+                        <span class="text-secondary">{{_itemDefined ? item.slug : 'n/a'}}</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-3">
     <div class="row pb-5">
         <div class="col-lg-3 mb-3">
 
@@ -84,9 +100,7 @@
                     </div>
                     {% endif %}
 
-                    <h4 class="pt-2">
-                        {{catigory.name}} <span class="bi bi-chevron-double-right text-secondary"></span> {{slug}}
-                    </h4>
+                    <h4 class="pt-2">{{slug}}</h4>
                     
                     <p class="text-secondary mb-1">{{catigory.description}}</p>
 
@@ -102,13 +116,13 @@
             <div class="row mb-3 pt-3">
                 <div class="col">
                     <a href="#" class="text-decoration-none text-secondary small ps-1">
-                        <span class="bi bi-arrow-left-circle-fill pe-1 text-primary"></span> Privious
+                        <span class="bi bi-arrow-left-circle-fill pe-1"></span> Privious
                     </a>
                 </div>
                 <div class="col">
                     <div class="float-end pe-1">
                         <a href="#" class="text-decoration-none text-secondary small">
-                            Next <span class="bi bi-arrow-right-circle-fill ps-1 text-primary"></span>
+                            Next <span class="bi bi-arrow-right-circle-fill ps-1"></span>
                         </a>
                     </div>
                 </div>
