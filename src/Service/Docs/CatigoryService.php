@@ -41,4 +41,9 @@ final class CatigoryService
 
         return $catigory;
     }
+
+    public function search(string $keyword): array
+    {
+        return $this->catigoryRepository->search($keyword);
+    }
 }

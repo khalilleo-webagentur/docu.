@@ -34,28 +34,21 @@ class DocuCatigoryRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return DocuCatigory[] Returns an array of DocuCatigory objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return DocuCatigory[] Returns an array of DocuCatigory objects
+     */
+    public function search(string $keyword): array
+    {
+        $text = '%' . $keyword . '%';
+        $qb = $this->createQueryBuilder('t1');
+        $qb
+            ->where($qb->expr()->like('t1.name', ':name'))
+            ->setParameter('name', $text);
 
-//    public function findOneBySomeField($value): ?DocuCatigory
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        return $qb->orWhere($qb->expr()->like('t1.description', ':description'))
+            ->setParameter('description', $text)
+            ->setMaxResults(7)
+            ->getQuery()
+            ->getResult();
+    }
 }
