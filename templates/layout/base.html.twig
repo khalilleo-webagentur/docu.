@@ -44,7 +44,7 @@
 
     <base target="_self">
 
-    <link rel='dns-prefetch' href='//www.go.khalilleo.com' />
+    <link rel='dns-prefetch' href="{{app.request.schemeAndHttpHost}}" />
 
     {% block stylesheets %}
     <link href="{{asset('assets/css/bootstrap-icons.min.css?v=1.10.5')}}" rel="stylesheet" />

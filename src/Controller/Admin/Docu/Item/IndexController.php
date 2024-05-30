@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin\Docu\Item;
 
 use App\Entity\Docu\DocuItem;
-use App\Helper\DocuHelper;
+use App\Helper\Docu\DocuHelper;
 use App\Service\Docs\CatigoryService;
 use App\Service\Docs\ItemService;
 use App\Traits\FormValidationTrait;

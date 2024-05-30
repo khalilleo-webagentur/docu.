@@ -2,7 +2,7 @@
 
 namespace App\Entity\Docu;
 
-use App\Helper\DocuHelper;
+use App\Helper\Docu\DocuHelper;
 use App\Repository\Docu\DocuItemRepository;
 use DateTime;
 use Doctrine\DBAL\Types\Types;
