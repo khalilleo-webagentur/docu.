@@ -63,14 +63,13 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="2hV9xO3aD7v" class="form-label">Content <span
-                                    class="text-danger">*</span></label>
-                            <textarea type="text" class="form-control" id="2hV9xO3aD7v" placeholder="Content (Required)"
-                                rows="20" name="content" required></textarea>
+                            <div id="editor" class="bg-white"></div>
+                            <input type="hidden" name="content" id="content">
                         </div>
 
                         <div class="my-3">
-                            <button class="btn btn-success">Add Item<span class="fa fa-check-circle fa-sm pl-1"></span>
+                            <button class="btn btn-success" id="formSave">
+                                Add Item <span class="fa fa-check-circle fa-sm pl-1"></span>
                             </button>
                         </div>
                     </form>

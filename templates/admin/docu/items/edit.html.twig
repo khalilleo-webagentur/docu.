@@ -66,28 +66,26 @@
                             <div class="col-lg-1">
                                 <div class="mb-3">
                                     <label for="V9xO3aD7v" class="form-label">Likes</label>
-                                    <input type="number" class="form-control" id="V9xO3aD7v"
+                                    <input type="number" class="form-control" id="V9xO3aD7v" min="0"
                                         placeholder="{{item.likes}}" value="{{item.likes}}" name="likes">
                                 </div>
                             </div>
                             <div class="col-lg-1">
                                 <div class="mb-3">
                                     <label for="V9xO3aD7v" class="form-label">disLikes</label>
-                                    <input type="number" class="form-control" id="V9xO3aD7v"
+                                    <input type="number" class="form-control" id="V9xO3aD7v" min="0"
                                         placeholder="{{item.disLikes}}" value="{{item.disLikes}}" name="disLikes">
                                 </div>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="2hV9xO3aD7v" class="form-label">Content <span
-                                    class="text-danger">*</span></label>
-                            <textarea type="text" class="form-control" id="2hV9xO3aD7v" placeholder="Content (Required)"
-                                rows="20" name="content">{{item.content}}</textarea>
+                            <div id="editor" class="bg-white">{{item.content|raw}}</div>
+                            <input type="hidden" name="content" id="content">
                         </div>
 
                         <div class="my-3">
-                            <button class="btn btn-success">Save Changes<span
+                            <button class="btn btn-success" id="formSave">Save Changes<span
                                     class="fa fa-check-circle fa-sm pl-1"></span>
                             </button>
                         </div>

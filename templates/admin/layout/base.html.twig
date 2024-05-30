@@ -42,6 +42,9 @@
     {% block stylesheets %}
     <link rel="stylesheet" href="{{asset('lte/css/root.min.css?v=3.4.0')}}">
     <link rel="stylesheet" href="{{asset('lte/css/app.css?v=1.0.0')}}">
+
+    <link href="{{ asset('lib/quill/monokai-sublime.min.css?ver=1.0.0') }}" rel="stylesheet" />
+    <link href="{{ asset('lib/quill/quill.snow.css?ver=1.3.6') }}" rel="stylesheet" />
     {% endblock %}
     
     <noscript>
@@ -63,6 +66,10 @@
     {% block javascripts %}
     <script src="{{asset('lte/js/root.min.js?v=3.4.0')}}"></script>
     <script src="{{asset('lte/js/app.js?v=1.0.0')}}"></script>
+    
+    <script type="application/javascript" charset="utf-8" src="{{ asset('lib/quill/highlight.min.js?ver=9.18.1') }}"></script>
+    <script type="application/javascript" charset="utf-8" src="{{ asset('lib/quill/quill.js?ver=1.3.6') }}"></script>
+    <script type="application/javascript" charset="utf-8" src="{{ asset('lib/quill/quill-config.js?ver=1.0.0') }}"></script>
     {% endblock %}
 </body>
 </html>

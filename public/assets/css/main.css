@@ -156,3 +156,19 @@ body {
         opacity: 1;
     }
 }
+
+.ql-syntax {
+    background: #454545;
+    padding: 10px 15px;
+}
+
+p > img {
+    width: 100%;
+    height: 320px;
+}
+
+@media (max-width: 868px) {
+    p > img {
+        height: 230px;
+    }
+}

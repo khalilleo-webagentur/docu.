@@ -61,7 +61,7 @@ class IndexController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN');
 
         $slug = $this->validate($request->request->get('slug'));
-        $content = $this->validateTextarea($request->request->get('content'));
+        $content = $request->request->get('content');
 
         if (!$slug || !$content) {
             $this->addFlash('warning', 'Name and content are required.');
@@ -127,7 +127,7 @@ class IndexController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN');
 
         $slug = $this->validate($request->request->get('slug'));
-        $content = $this->validateTextarea($request->request->get('content'));
+        $content = $request->request->get('content');
 
         if (!$slug || !$content) {
             $this->addFlash('warning', 'Name and content are required.');

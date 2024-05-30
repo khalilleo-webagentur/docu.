@@ -27,13 +27,23 @@
 <div class="container-fluid pt-3">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-lg-6">
                 <div class="ps-2">
                     <small>
                         Docu <span class="bi bi-chevron-double-right text-secondary"></span> 
                         {{catigory.name}} <span class="bi bi-chevron-double-right text-secondary"></span> 
                         <span class="text-secondary">{{_itemDefined ? item.slug : 'n/a'}}</span>
                     </small>
+
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <small class="float-end">
+                        <a href="{{path('app_admin_docu_item_edit', {id:item.id})}}" target="_parent">
+                            <span class="bi bi-pencil-square"></span>
+                        </a>
+                    </small>
+                    {% else %}
+                    <small class="bi bi-pencil-square float-end text-primary cursor-help" title="Login to Edit"></small>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -93,7 +103,7 @@
                         </div>
                         <div class="col">
                             <div class="float-end">
-                                <small class="bi bi-clock small text-secondary"></small>
+                                <small class="bi bi-clock small text-secondary text-warning"></small>
                                 <span class="small text-secondary">{{item.readTime}}</span>
                             </div>
                         </div>
@@ -108,7 +118,7 @@
 
                 {% if item is defined and item %}
                 <div class="p-2 px-lg-3">
-                    {{item.content}}
+                    {{item.content|raw}}
                 </div>
                 {% endif %}
             </div>
