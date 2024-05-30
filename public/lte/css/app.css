@@ -7,6 +7,16 @@ label, label:not(.form-check-label):not(.custom-file-label){
     font-weight: 500;
 }
 
+::-moz-selection {
+    background-color: #ffc107;;
+    color: #000
+}
+
+::selection {
+    background-color: #ffc107;
+    color: #000
+}
+
 .btn {
     text-transform: capitalize;
     border-radius: 50px;
