@@ -26,17 +26,23 @@ final class ItemService
         return $this->itemRepository->findOneBy(['catigory' => $catigory], ['id' => 'ASC']);
     }
 
+    /**
+     * @return DocuItem[]
+     */
     public function getAll(): array
     {
         return $this->itemRepository->findBy([], ['id' => 'DESC']);
     }
 
+    /**
+     * @return DocuItem[]
+     */
     public function getAllByCatigory(DocuCatigory $catigory): array
     {
         return $this->itemRepository->findBy(['catigory' => $catigory], ['id' => 'ASC']);
     }
 
-    public function getOneBySlug(string $slug): ? DocuItem
+    public function getOneBySlug(string $slug): ?DocuItem
     {
         return $this->itemRepository->findOneBy(['slug' => $slug]);
     }

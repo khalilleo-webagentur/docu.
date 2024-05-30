@@ -95,7 +95,7 @@
                     {% if _itemDefined %}
                     <div class="row">
                         <div class="col">
-                            <p class="pb-2">
+                            <p>
                                 <small class="text-secondary pe-2">
                                     Last updated: {{ item.updatedAt|date('d.m.Y')}}
                                 </small>
@@ -110,7 +110,7 @@
                     </div>
                     {% endif %}
 
-                    <h4 class="pt-2">{{slug}}</h4>
+                    <h4>{{slug}}</h4>
                     
                     <p class="text-secondary mb-1">{{catigory.description}}</p>
 
@@ -123,7 +123,7 @@
                 {% endif %}
             </div>
 
-            <div class="row mb-3 pt-3">
+            <!-- <div class="row mb-3 pt-3">
                 <div class="col">
                     <a href="#" class="text-decoration-none text-secondary small ps-1">
                         <span class="bi bi-arrow-left-circle-fill pe-1"></span> Privious
@@ -136,15 +136,15 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="row text-center bg-white py-5 mx-1">
+            <div class="row text-center bg-white py-5 mx-0 mt-3">
                 <div class="col">
                     <h5 class="mb-3">Was this article helpful?</h5>
                     <div class="row">
                         <div class="col-6 text-end">
                             <form action="{{path('app_docu_item_rate_store')}}" method="post">
-                                <button class="btn btn-success w-50 btnLike" style="border-radius: 0;" type="submit"
+                                <button class="btn btn-secondary w-50 btnLike" style="border-radius: 0;" type="submit"
                                     data-id="{{_itemDefined ? item.id : 0}}">
                                     <span class="bi bi-hand-thumbs-up-fill"></span> <span class="ps-2">({{_itemDefined ?
                                         item.likes : 0}})</span>
@@ -156,7 +156,7 @@
                         </div>
                         <div class="col-6 text-start">
                             <form action="{{path('app_docu_item_rate_store')}}" method="post">
-                                <button class="btn btn-danger w-50 btnDisLike" style="border-radius: 0;" type="submit"
+                                <button class="btn btn-secondary w-50 btnDisLike" style="border-radius: 0;" type="submit"
                                     data-id="{{_itemDefined ? item.id : 0}}">
                                     <span class="bi bi-hand-thumbs-down-fill"></span> <span class="ps-2">({{_itemDefined ?
                                         item.disLikes : 0}})</span>
