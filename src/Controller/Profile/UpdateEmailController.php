@@ -66,7 +66,7 @@ class UpdateEmailController extends AbstractController
 
         $changeEmailUserMail->send($user->getName(), $user->getUserIdentifier(), $token);
 
-        $this->addFlash('notice', 'An email has been sent to your new Email. Verifiy your email now.');
+        $this->addFlash('notice', sprintf('An email has been sent to your Email [%s]. Verifiy your email now.', $user->getUserIdentifier()));
 
         return $this->redirectToRoute(self::APP_PROFILE);
     }
