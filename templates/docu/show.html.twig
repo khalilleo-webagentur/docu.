@@ -30,8 +30,8 @@
             <div class="col-lg-6">
                 <div class="ps-2">
                     <small>
-                        Docu <span class="bi bi-chevron-double-right text-secondary"></span> 
-                        {{catigory.name}} <span class="bi bi-chevron-double-right text-secondary"></span> 
+                        Docu <span class="bi bi-chevron-double-right text-secondary"></span>
+                        {{catigory.name}} <span class="bi bi-chevron-double-right text-secondary"></span>
                         <span class="text-secondary">{{_itemDefined ? item.slug : 'n/a'}}</span>
                     </small>
 
@@ -59,28 +59,30 @@
                 <br>
 
                 {% if count(catigories) > 0 %}
-                    
-                    {% for row in catigories %}
 
-                        {% if count(row.items) > 0 %}
-                        <p class="mb-0 pt-1">
-                            <b class="{{row.name == catigory.name ? 'text-dark' : 'text-secondary'}}" id="{{hash(catigory.name)}}">
-                                {{row.name}}
-                            </b>
-                        </p>
-                        {% endif %}
+                {% for row in catigories %}
 
-                        {% for item in row.items %}
+                {% if count(row.items) > 0 %}
+                <p class="mb-0 pt-1">
+                    <b class="{{row.name == catigory.name ? 'text-dark' : 'text-secondary'}}"
+                        id="{{hash(catigory.name)}}">
+                        {{row.name}}
+                    </b>
+                </p>
+                {% endif %}
 
-                            {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name', {slug:slug(item.slug)}) %}
+                {% for item in row.items %}
 
-                            <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}#{{hash(catigory.name)}}"
-                                class="text-decoration-none {{_uri == _currentTab or item.slug == slug ? 'text-danger' : 'text-primary'}} fs-14">
-                                <span class="bi bi-dot pe-1 ps-2"></span> {{item.slug}}
-                            </a><br>
-                        {% endfor %}
+                {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name',
+                {slug:slug(item.slug)}) %}
 
-                    {% endfor %}
+                <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}#{{hash(catigory.name)}}"
+                    class="text-decoration-none {{_uri == _currentTab or item.slug == slug ? 'text-danger' : 'text-primary'}} fs-14">
+                    <span class="bi bi-dot pe-1 ps-2"></span> {{item.slug}}
+                </a><br>
+                {% endfor %}
+
+                {% endfor %}
 
                 {% endif %}
             </div>
@@ -91,7 +93,7 @@
             <div class="p-2 bg-white shadow-sm">
 
                 <div class="px-lg-3">
-                    
+
                     {% if _itemDefined %}
                     <div class="row">
                         <div class="col">
@@ -111,7 +113,7 @@
                     {% endif %}
 
                     <h4>{{slug}}</h4>
-                    
+
                     <p class="text-secondary mb-1">{{catigory.description}}</p>
 
                 </div>
@@ -122,6 +124,18 @@
                 </div>
                 {% endif %}
             </div>
+
+
+            <!-- <div class="row mt-3">
+                <div class="col-lg-12">
+                    {% for item in catigory.items %}
+                    <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}"
+                        class="text-decoration-none fs-14 badge text-primary">
+                        {{item.slug}}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div> -->
 
             <!-- <div class="row mb-3 pt-3">
                 <div class="col">
@@ -138,7 +152,7 @@
                 </div>
             </div> -->
 
-            <div class="row text-center bg-white py-5 mx-0 mt-3 shadow-sm">
+            <div class="row text-center bg-white py-4 mx-0 mt-3 shadow-sm">
                 <div class="col">
                     <h5 class="mb-3">Was this article helpful?</h5>
                     <div class="row">
@@ -156,10 +170,11 @@
                         </div>
                         <div class="col-6 text-start">
                             <form action="{{path('app_docu_item_rate_store')}}" method="post">
-                                <button class="btn btn-secondary w-50 btnDisLike" style="border-radius: 0;" type="submit"
-                                    data-id="{{_itemDefined ? item.id : 0}}">
-                                    <span class="bi bi-hand-thumbs-down-fill"></span> <span class="ps-2">({{_itemDefined ?
-                                        item.disLikes : 0}})</span>
+                                <button class="btn btn-secondary w-50 btnDisLike" style="border-radius: 0;"
+                                    type="submit" data-id="{{_itemDefined ? item.id : 0}}">
+                                    <span class="bi bi-hand-thumbs-down-fill"></span> <span class="ps-2">
+                                        ({{_itemDefined ? item.disLikes : 0}})
+                                    </span>
                                 </button>
                                 <input type="hidden" name="id" value="{{_itemDefined ? item.id : 0}}">
                                 <input type="hidden" name="disLike" value="on">
