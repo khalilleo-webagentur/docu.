@@ -126,42 +126,37 @@
             </div>
 
 
-            <!-- <div class="row mt-3">
+            <div class="row mt-4 mb-2 md-d-block">
                 <div class="col-lg-12">
-                    {% for item in catigory.items %}
-                    <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}"
-                        class="text-decoration-none fs-14 badge text-primary">
-                        {{item.slug}}
-                    </a>
-                    {% endfor %}
+                    <h5>Related Articles to {{catigory.name}}</h5>
+                    <ol>
+                        {% for rowItem in catigory.items %}
+                            {% if item.slug == rowItem.slug %}
+                                <li class="text-secondary">{{item.slug}}</li>
+                            {% else %}
+                                <li>
+                                    <a href="{{path('app_docu_item_name', {slug:slug(rowItem.slug)})}}"
+                                        class="text-decoration-none fs-14 badge text-primary">
+                                        {{rowItem.slug}}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
                 </div>
-            </div> -->
-
-            <!-- <div class="row mb-3 pt-3">
-                <div class="col">
-                    <a href="#" class="text-decoration-none text-secondary small ps-1">
-                        <span class="bi bi-arrow-left-circle-fill pe-1"></span> Privious
-                    </a>
-                </div>
-                <div class="col">
-                    <div class="float-end pe-1">
-                        <a href="#" class="text-decoration-none text-secondary small">
-                            Next <span class="bi bi-arrow-right-circle-fill ps-1"></span>
-                        </a>
-                    </div>
-                </div>
-            </div> -->
+            </div>
 
             <div class="row text-center bg-white py-4 mx-0 mt-3 shadow-sm">
-                <div class="col">
+                <div class="col-12">
                     <h5 class="mb-3">Was this article helpful?</h5>
                     <div class="row">
                         <div class="col-6 text-end">
                             <form action="{{path('app_docu_item_rate_store')}}" method="post">
-                                <button class="btn btn-secondary w-50 btnLike" style="border-radius: 0;" type="submit"
+                                <button class="btn btn-secondary btnLike px-3" type="submit"
                                     data-id="{{_itemDefined ? item.id : 0}}">
-                                    <span class="bi bi-hand-thumbs-up-fill"></span> <span class="ps-2">({{_itemDefined ?
-                                        item.likes : 0}})</span>
+                                    <span class="bi bi-hand-thumbs-up-fill"></span> <span class="ps-2">
+                                        ({{_itemDefined ? item.likes : 0}})
+                                    </span>
                                 </button>
                                 <input type="hidden" name="id" value="{{_itemDefined ? item.id : 0}}">
                                 <input type="hidden" name="like" value="on">
@@ -170,7 +165,7 @@
                         </div>
                         <div class="col-6 text-start">
                             <form action="{{path('app_docu_item_rate_store')}}" method="post">
-                                <button class="btn btn-secondary w-50 btnDisLike" style="border-radius: 0;"
+                                <button class="btn btn-secondary btnDisLike px-3"
                                     type="submit" data-id="{{_itemDefined ? item.id : 0}}">
                                     <span class="bi bi-hand-thumbs-down-fill"></span> <span class="ps-2">
                                         ({{_itemDefined ? item.disLikes : 0}})
@@ -188,16 +183,36 @@
         </div>
 
         <div class="col-lg-3">
-            <div class="md-d-none py-4 bg-white px-3 sticky-top shadow-sm">
-                {% for item in catigory.items %}
-                {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name', {slug:slug(item.slug)}) %}
-                <div class="p-1">
-                    <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}"
-                        class="text-decoration-none fs-14 {{_currentTab == _uri ? 'text-dark' : 'text-secondary'}}">
-                        {{item.slug}}
-                    </a>
+            <div class="sticky-top">
+                <div class="md-d-none py-4 bg-white px-3 shadow-sm">
+                    {% for item in catigory.items %}
+                    {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name',
+                    {slug:slug(item.slug)}) %}
+                    <div class="p-1">
+                        <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}"
+                            class="text-decoration-none fs-14 {{_currentTab == _uri ? 'text-dark' : 'text-secondary'}}">
+                            {{item.slug}}
+                        </a>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                <div class="my-3 bg-white shadow-sm p-3">
+                    <form action="{{path('app_docu_export_item_as_pdf')}}" method="post">
+                        <span class="fs-14 cursor-help text-secondary" onclick="this.closest('form').submit();" title="This feature is not implemented yet!">
+                            <span class="bi bi-download pe-1"></span> Export as PDF
+                        </span>
+                    </form>
+                </div>
+                <div class="my-3 bg-white shadow-sm p-3">
+                    <b class="text-secondary">Help & Support</b>
+                    <p class="text-secondary small">
+                        use the
+                        <a href="{{path('app_contact_us_index')}}" class="text-decoration-none">
+                        Contact Form</a> or send us an E-mail to <a href="mailto:{{supportEmail()}}" class="text-decoration-none">
+                            {{supportEmail()}}
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>

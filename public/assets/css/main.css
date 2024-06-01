@@ -73,6 +73,10 @@ input[type="color"]:focus,
     cursor: pointer;
 }
 
+.md-d-block {
+    display: none;
+}
+
 @media (max-width: 868px) {
     .md-text-center {
         text-align: center !important;
@@ -80,6 +84,10 @@ input[type="color"]:focus,
 
     .md-d-none {
         display: none;
+    }
+
+    .md-d-block {
+        display: block;
     }
 }
 
@@ -180,5 +188,11 @@ p > img {
 @media (max-width: 868px) {
     p > img {
         height: 230px;
+    }
+}
+
+@media (max-width: 568px) {
+    p > img {
+        height: 187px;
     }
 }

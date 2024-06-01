@@ -17,10 +17,11 @@ class TwigHelper extends AbstractExtension
         private readonly ConfigService $configService
     ) {
     }
-
+    
     public function getFunctions(): array
     {
         return [
+            new TwigFunction('supportEmail', [$this, 'getSupportEmail']),
             new TwigFunction('slug', [$this, 'slug']),
             new TwigFunction('hash', [$this, 'hash']),
             new TwigFunction('timeAgo', [$this, 'timeAgo']),
@@ -172,6 +173,11 @@ class TwigHelper extends AbstractExtension
         $color = $color ?? 'text-danger';
 
         echo "<span class='fa fa-thumbs-down fa-sm $color'></span>";
+    }
+
+    public function getSupportEmail(): string
+    {
+        return $this->configService->getParameter('support_emal');
     }
 
     public function getAppName(): string
