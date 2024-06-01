@@ -98,8 +98,8 @@
                     <div class="row">
                         <div class="col">
                             <p>
-                                <small class="text-secondary pe-2">
-                                    Last updated: {{ item.updatedAt|date('d.m.Y')}}
+                                <small class="text-secondary pe-2" title="{{item.updatedAt|date}}">
+                                    Last updated: {{ timeAgo(item.updatedAt)}}
                                 </small>
                             </p>
                         </div>
