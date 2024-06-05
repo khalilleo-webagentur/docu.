@@ -2,4 +2,4 @@
 
 What you need to get your documentation online.
 
-[docu.khalilleo.com](http://go.khalilleo.com/docu-home)
+[docu.khalilleo.com](http://a.khalilleo.com/docu-home)
