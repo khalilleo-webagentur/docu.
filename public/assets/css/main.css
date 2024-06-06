@@ -77,6 +77,10 @@ input[type="color"]:focus,
     display: none;
 }
 
+.a-primaray-hover:hover {
+    color: rgb(79, 145, 243) !important;
+}
+
 @media (max-width: 868px) {
     .md-text-center {
         text-align: center !important;

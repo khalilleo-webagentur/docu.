@@ -52,9 +52,9 @@
 
 <div class="container my-3">
     <div class="row pb-5">
-        <div class="col-lg-3 mb-3">
+        <div class="col-lg-3">
 
-            <div class="bg-white p-2 overflow-auto px-3 sticky-top shadow-sm" style="height: 71vh;">
+            <div class="bg-white ps-2 ps-lg-3 overflow-auto px-3 pb-4 sticky-top shadow-sm" style="height: 71vh;">
 
                 <br>
 
@@ -64,9 +64,9 @@
 
                 {% if count(row.items) > 0 %}
                 <p class="mb-0 pt-1">
-                    <b class="{{row.name == catigory.name ? 'text-dark' : 'text-secondary'}}"
-                        id="{{hash(catigory.name)}}">
-                        {{row.name}}
+                    <b class="text-secondary"
+                        id="{{hash(catigory.name)}}"> 
+                        <span class="bi {{row.name == catigory.name ? 'bi-record-fill text-primary' : 'bi-record text-secondary'}}"></span> {{row.name}}
                     </b>
                 </p>
                 {% endif %}
@@ -77,8 +77,8 @@
                 {slug:slug(item.slug)}) %}
 
                 <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}#{{hash(catigory.name)}}"
-                    class="text-decoration-none {{_uri == _currentTab or item.slug == slug ? 'text-danger' : 'text-primary'}} fs-14">
-                    <span class="bi bi-dot pe-1 ps-2"></span> {{item.slug}}
+                    class="text-decoration-none a-primaray-hover ms-2 {{_uri == _currentTab or item.slug == slug ? 'text-primary' : 'text-secondary'}} fs-14">
+                    <span class="bi {{_uri == _currentTab or item.slug == slug ? 'bi-record-fill' : 'bi-record'}} pe-1 ps-2"></span> {{item.slug}}
                 </a><br>
                 {% endfor %}
 
@@ -125,27 +125,6 @@
                 {% endif %}
             </div>
 
-
-            <div class="row mt-4 mb-2 md-d-block">
-                <div class="col-lg-12">
-                    <h5>Related Articles to {{catigory.name}}</h5>
-                    <ol>
-                        {% for rowItem in catigory.items %}
-                            {% if item.slug == rowItem.slug %}
-                                <li class="text-secondary">{{item.slug}}</li>
-                            {% else %}
-                                <li>
-                                    <a href="{{path('app_docu_item_name', {slug:slug(rowItem.slug)})}}"
-                                        class="text-decoration-none fs-14 badge text-primary">
-                                        {{rowItem.slug}}
-                                    </a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ol>
-                </div>
-            </div>
-
             <div class="row text-center bg-white py-4 mx-0 mt-3 shadow-sm">
                 <div class="col-12">
                     <h5 class="mb-3">Was this article helpful?</h5>
@@ -184,14 +163,14 @@
 
         <div class="col-lg-3">
             <div class="sticky-top">
-                <div class="md-d-none py-4 bg-white px-3 shadow-sm">
+                <div class="py-4 bg-white px-3 shadow-sm">
                     {% for item in catigory.items %}
                     {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name',
                     {slug:slug(item.slug)}) %}
                     <div class="p-1">
                         <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}"
                             class="text-decoration-none fs-14 {{_currentTab == _uri ? 'text-dark' : 'text-secondary'}}">
-                            {{item.slug}}
+                            <span class="bi bi-dash-lg pe-1"></span> {{item.slug}}
                         </a>
                     </div>
                     {% endfor %}
