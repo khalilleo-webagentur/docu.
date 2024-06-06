@@ -64,9 +64,9 @@
 
                 {% if count(row.items) > 0 %}
                 <p class="mb-0 pt-1">
-                    <b class="text-secondary"
+                    <b class="{{row.name == catigory.name ? 'text-dark' : 'text-secondary'}}"
                         id="{{hash(catigory.name)}}"> 
-                        <span class="bi {{row.name == catigory.name ? 'bi-record-fill text-primary' : 'bi-record text-secondary'}}"></span> {{row.name}}
+                        <span class="bi {{row.name == catigory.name ? 'bi-record-fill text-dark' : 'bi-record text-secondary'}}"></span> {{row.name}}
                     </b>
                 </p>
                 {% endif %}
