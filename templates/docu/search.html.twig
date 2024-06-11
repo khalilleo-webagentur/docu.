@@ -30,7 +30,7 @@
                     {{keyword is defined and keyword ? keyword : ''}}</span>"
             </p>
             {% for row in catigories %}
-            <div class="bg-white p-2 p-lg-3 mb-2">
+            <div class="bg-white p-2 p-lg-3 px-lg-4 mb-2">
                 <h5 class="py-2">{{row.name}}</h5>
                 <a href="{{path('app_docu_catigory_name', {name:slug(row.name)})}}" 
                     class="text-secondary text-decoration-none a-primaray-hover">
@@ -45,7 +45,7 @@
                 </p>
             </div>
             {% endif %}
-            <a href="{{path('app_docu_home')}}" class="text-decoration-none">
+            <a href="{{path('app_docu_home')}}" class="text-decoration-none my-3">
                 <span class="bi bi-arrow-left-circle-fill pe-1"></span> Back to Homepage
             </a>
         </div>
