@@ -27,14 +27,14 @@ $(document).ready(function () {
 
         let i = $('.btnLike').attr('data-id');
 
-        if (isLocalStorageAvailable && window.localStorage.getItem('LIKE'+i) === '1') {
+        if (isLocalStorageAvailable && window.localStorage.getItem('y3q7d2z6g6f6c2r7'+i) === '1') {
             $('.btnLike').prop('disabled', 'true');
         }
 
         $('.btnLike').on('click', function () {
             let i = $('.btnLike').attr('data-id');
             if (isLocalStorageAvailable) {
-               window.localStorage.setItem('LIKE'+i, '1');
+               window.localStorage.setItem('y3q7d2z6g6f6c2r7'+i, '1');
             }
         });
     }
@@ -43,15 +43,15 @@ $(document).ready(function () {
 
         let i = $('.btnDisLike').attr('data-id');
 
-        if (isLocalStorageAvailable && window.localStorage.getItem('DIS_LIKE'+i) === '1') {
+        if (isLocalStorageAvailable && window.localStorage.getItem('x4k3m9g2r5e6m2k7'+i) === '1') {
             $('.btnDisLike').prop('disabled', 'true');
         }
 
         $('.btnDisLike').on('click', function () {
             let i = $('.btnDisLike').attr('data-id');
             if (isLocalStorageAvailable) {
-               window.localStorage.setItem('DIS_LIKE'+i, '1')
-               window.localStorage.removeItem('LIKE'+i);
+               window.localStorage.setItem('x4k3m9g2r5e6m2k7'+i, '1')
+               window.localStorage.removeItem('y3q7d2z6g6f6c2r7'+i);
             }
         });
     }

@@ -35,15 +35,14 @@
                         <span class="text-secondary">{{_itemDefined ? item.slug : 'n/a'}}</span>
                     </small>
 
-                    {% if is_granted('ROLE_SUPER_ADMIN') %}
-                    <small class="float-end">
-                        <a href="{{path('app_admin_docu_item_edit', {id:item.id})}}" target="_parent">
-                            <span class="bi bi-pencil-square"></span>
-                        </a>
-                    </small>
-                    {% else %}
-                    <small class="bi bi-pencil-square float-end text-primary cursor-help" title="Login to Edit"></small>
-                    {% endif %}
+                    <span class="bi bi-list float-end ms-3 d-lg-none pointer" style="background: #ffc107;
+                                        color: #454545;
+                                        padding: 1px 8px;
+                                        border-radius: 4px;"
+                                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></span>
+
+                    {% include 'docu/partial/offcanvas_menu_list.html.twig' %}
+
                 </div>
             </div>
         </div>
@@ -52,41 +51,14 @@
 
 <div class="container my-3">
     <div class="row pb-5">
+        
         <div class="col-lg-3">
-
-            <div class="bg-white ps-0 ps-lg-2 overflow-auto px-3 pb-4 sticky-top shadow-sm" style="height: 71vh;">
-
+            <div class="bg-white ps-0 ps-lg-2 overflow-auto px-3 pb-4 sticky-top shadow-sm md-d-none" style="height: 71vh;">
                 <br>
-
-                {% if count(catigories) > 0 %}
-
-                {% for row in catigories %}
-
-                {% if count(row.items) > 0 %}
-                <p class="mb-0 pt-1 fs-15">
-                    <b class="{{row.name == catigory.name ? 'text-white-75' : 'text-secondary'}}"
-                        id="{{hash(catigory.name)}}"> 
-                        <span class="bi bi-dash text-white-75"></span> {{row.name}}
-                    </b>
-                </p>
-                {% endif %}
-
-                {% for item in row.items %}
-
-                {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_docu_item_name', {slug:slug(item.slug)}) %}
-
-                <a href="{{path('app_docu_item_name', {slug:slug(item.slug)})}}#{{hash(catigory.name)}}"
-                    class="text-decoration-none a-primaray-hover fs-15 ms-2 {{_uri == _currentTab or item.slug == slug ? 'text-primary' : 'text-secondary'}} fs-14">
-                    <span class="bi {{_uri == _currentTab or item.slug == slug ? 'bi-record-fill' : 'bi-record'}} pe-1 ps-3"></span> {{item.slug}}
-                </a><br>
-                {% endfor %}
-
-                {% endfor %}
-
-                {% endif %}
+                {% include 'docu/partial/menu_list.html.twig' %}
             </div>
-
         </div>
+
         <div class="col-lg-6 mb-3">
 
             <div class="p-2 bg-white shadow-sm">
@@ -97,15 +69,25 @@
                     <div class="row">
                         <div class="col">
                             <p>
-                                <small class="text-secondary pe-2" title="{{item.updatedAt|date}}">
-                                    Last updated: {{ timeAgo(item.updatedAt)}}
-                                </small>
+                                <small class="bi bi-clock small text-secondary text-warning"></small>
+                                <span class="small text-secondary">{{item.readTime}}</span>
                             </p>
                         </div>
                         <div class="col">
                             <div class="float-end">
-                                <small class="bi bi-clock small text-secondary text-warning"></small>
-                                <span class="small text-secondary">{{item.readTime}}</span>
+                                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <small class="float-end">
+                                    <a href="{{path('app_admin_docu_item_edit', {id:item.id})}}" class="text-decoration-none" target="_parent">
+                                        Edit this Page <span class="bi bi-pencil-square"></span> 
+                                    </a>
+                                </small>
+                                {% else %}
+                                    <small>
+                                        <a href="{{path('app_auth')}}" class="text-decoration-none" target="_parent">
+                                            Login to Edit <span class="bi bi-pencil-square ps-1"></span> 
+                                        </a>
+                                    </small>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -119,7 +101,16 @@
 
                 {% if item is defined and item %}
                 <div class="p-2 px-lg-3 pb-3">
+                    
                     {{item.content|raw}}
+                   
+                    <div class="float-end">
+                        <small class="text-secondary" title="{{item.updatedAt|date}}">
+                            Last updated: {{ timeAgo(item.updatedAt)}}
+                        </small>
+                    </div>
+
+                    <br>
                 </div>
                 {% endif %}
             </div>
