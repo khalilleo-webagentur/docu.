@@ -21,6 +21,7 @@ class TwigHelper extends AbstractExtension
     public function getFunctions(): array
     {
         return [
+            new TwigFunction('numberNotation', [$this, 'numberNotation']),
             new TwigFunction('supportEmail', [$this, 'getSupportEmail']),
             new TwigFunction('slug', [$this, 'slug']),
             new TwigFunction('hash', [$this, 'hash']),
@@ -39,6 +40,25 @@ class TwigHelper extends AbstractExtension
             new TwigFunction('madeBy', [$this, 'getMadeBy']),
             new TwigFunction('version', [$this, 'getVersion']),
         ];
+    }
+
+    public function numberNotation(?int $number): string|int
+    {
+
+        if ($number && $number > 1000) {
+
+            $x = round($number);
+            $xArray = explode(',', number_format($x));
+            $xUnits = ['K+', 'M+', 'B+', 'T+'];
+            $xCountUnits = count($xArray) - 1;
+            $xDisplay = $x;
+            $xDisplay = $xArray[0] . ((int) $xArray[1][0] !== 0 ? '.' . $xArray[1][0] : '');
+            $xDisplay .= $xUnits[$xCountUnits - 1];
+
+            return $xDisplay;
+        }
+
+        return $number;
     }
 
     public function slug(string $text): string

@@ -25,8 +25,11 @@
                     </a>
                 </td>
 
-                <td>{{row.likes}}</td>
-                <td>{{row.disLikes}}</td>
+                <td>
+                    <span title="{{row.likes}}">{{numberNotation(row.likes)}}</span></td>
+                <td>
+                    <span title="{{row.disLikes}}">{{numberNotation(row.disLikes)}}</span>
+                </td>
 
                 <td title="{{ row.updatedAt|date }}">{{ timeAgo(row.updatedAt) }}</td>
 
