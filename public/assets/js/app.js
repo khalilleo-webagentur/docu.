@@ -23,6 +23,16 @@ $(document).ready(function () {
          $(this).find('[autofocus]').focus();
      });
 
+     if($('.rmModal').length) {
+        $('.rmModal').on('click', function () {
+            $('.modalToRemoveAfterClick').modal('hide');
+    
+            setTimeout(function () {
+                $('input').val('');
+            }, 1500);
+        });
+    }
+
      if ($('.btnLike').length) {
 
         let i = $('.btnLike').attr('data-id');
