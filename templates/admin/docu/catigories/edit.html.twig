@@ -1,6 +1,6 @@
 {% extends 'admin/layout/base.html.twig' %}
 
-{% block title %} Dashboard :: Edit Catigory Details {% endblock %}
+{% block title %} Dashboard :: Edit Category Details {% endblock %}
 
 {% block body %}
 
@@ -9,25 +9,25 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6">
-                    <h4 class="m-0 text-dark">Edit Catigory Details</h4>
-                    <p class="text-secondary">
-                        This catigory has ({{itemsCount}}) items accociated with it.
-                    </p>
+                <div class="col-8">
+                    <h4 class="m-0 text-dark">Edit Category Details</h4>
+                    <small class="text-secondary pb-1">
+                        This Category has ({{itemsCount}}) items associated with it.
+                    </small>
                 </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                <div class="col-4">
+                    <div class="breadcrumb float-right">
                         <a href="{{path('app_admin_docu_catigories_index')}}" class="text-secondary">
                             Close <span class="fa fa-window-close"></span>
                         </a>
-                    </ol>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-fluid area-section">
 
             <div class="row">
                 <div class="col-lg-6">
