@@ -197,7 +197,7 @@ class TwigHelper extends AbstractExtension
 
     public function getSupportEmail(): string
     {
-        return $this->configService->getParameter('support_emal');
+        return $this->configService->getParameter('supportEmail');
     }
 
     public function getAppName(): string

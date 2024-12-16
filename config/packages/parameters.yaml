@@ -1,23 +1,23 @@
 parameters:
 
-  app_name: "Docu."
-  full_app_name: "Docu"
+  app_name: "He!p-Center"
+  full_app_name: "He!p."
   no_reply: "no-reply@khalilleo.com"
 
-  webmaster_name: "Webmaster"
-  webmaster_email: "demo@khalilleo.com"
+  webmasterName: "Webmaster"
+  webmasterEmail: "demo@khalilleo.com"
 
-  phonenumber: '0163/616-5396'
-  support_emal: 'help@khalilleo.com'
-  info_emal: 'info@khalilleo.com'
-  legal_emal: 'legal@khalilleo.com'
+  phoneNumber: '0163/616-5396'
+  supportEmail: 'help@khalilleo.com'
+  infoEmail: 'info@khalilleo.com'
+  legalEmail: 'legal@khalilleo.com'
 
-  address_street: 'Paul-Gerhardt-Str. 7'
-  adress_plz: '74321'
-  adress_city: 'Bietigheim-Bissingen'
-  adress_country: 'Deutschland'
+  addressStreet: 'Paul-Gerhardt-Str. 7'
+  addressPlz: '74321'
+  addressCity: 'Bietigheim-Bissingen'
+  addressCountry: 'Deutschland'
 
-  app_version: "1.0.32"
+  app_version: "1.1.3"
   
   app_author: "Khalilleo Teams"
   app_created: "2024-05-22"
