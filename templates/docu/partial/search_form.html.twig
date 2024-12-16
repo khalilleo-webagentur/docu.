@@ -1,10 +1,11 @@
 <form action="{{path('app_docu_search_q')}}" method="post" class="w-100">
     <div class="input-group mb-3">
-        <input class="form-control py-2 rounded-pill mr-1" name="q" type="search" placeholder="Search Docus .." required
-            value="{{keyword is defined and keyword ? keyword : ''}}">
+        <input class="form-control py-2 rounded-pill mr-1" name="q" type="search" placeholder="Search .." required
+            value="{{keyword is defined and keyword ? keyword : ''}}"
+            style="padding-left: 20px;">
         <span class="input-group-append">
-            <button class="btn rounded-pill" type="submit" style="margin-left: -45px;padding-top: 10px; z-index: 666;">
-                <span class="bi bi-search"></span>
+            <button class="btn rounded-pill" type="submit" style="margin-left: -48px;padding-top: 9px; z-index: 666;">
+                <span class="bi bi-search text-secondary"></span>
             </button>
         </span>
     </div>
