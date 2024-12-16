@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
     name: 'app:dummy-catigories',
-    description: 'Add demo dummy-catigories for demostration purposes.',
+    description: 'Add demo dummy-catigories for demonstration purposes.',
     hidden: false
 )]
 class DummyCatigoriesCommand extends Command

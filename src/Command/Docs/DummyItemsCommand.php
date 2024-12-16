@@ -17,7 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
     name: 'app:dummy-items',
-    description: 'Add demo dummy-items for demostration purposes.',
+    description: 'Add demo dummy-items for demonstration purposes.',
     hidden: false
 )]
 class DummyItemsCommand extends Command
