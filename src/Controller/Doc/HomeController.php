@@ -11,7 +11,7 @@ class HomeController extends AbstractController
 {
     public function __construct(
         private readonly CategoryService $categoryService
-    ) {
+    ){
     }
 
     #[Route('/', name: 'app_doc_home')]

@@ -12,7 +12,7 @@ final readonly class CategoryService
 {
     public function __construct(
         private CategoryRepository $categoryRepository
-    ) {
+    ){
     }
 
     public function getById(int $id): ?Category

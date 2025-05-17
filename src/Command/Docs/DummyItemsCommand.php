@@ -28,7 +28,8 @@ class DummyItemsCommand extends Command
     public function __construct(
         private readonly CategoryService $categoryService,
         private readonly ItemService     $itemService
-    ) {
+    )
+    {
         parent::__construct();
     }
 
@@ -51,7 +52,7 @@ class DummyItemsCommand extends Command
                         ->setCategory($category)
                         ->setSlug($faker->jobTitle())
                         ->setContent($faker->sentence(500))
-                        ->setReadTime($faker->numberBetween(1,12) . ' min.')
+                        ->setReadTime($faker->numberBetween(1, 12) . ' min.')
                 );
 
                 $i++;

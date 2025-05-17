@@ -13,7 +13,7 @@ final readonly class ItemService
 {
     public function __construct(
         private ItemRepository $itemRepository
-    ) {
+    ){
     }
 
     public function getById(int $id): ?Item

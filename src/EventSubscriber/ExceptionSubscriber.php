@@ -11,7 +11,7 @@ class ExceptionSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         private readonly MonologService $monolog
-    ) {
+    ){
     }
 
     public static function getSubscribedEvents(): array

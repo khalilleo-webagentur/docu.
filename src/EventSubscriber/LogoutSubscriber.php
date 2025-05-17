@@ -11,7 +11,7 @@ readonly class LogoutSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         private UrlGeneratorInterface $urlGenerator
-    ) {
+    ){
     }
 
     public static function getSubscribedEvents(): array
@@ -31,7 +31,7 @@ readonly class LogoutSubscriber implements EventSubscriberInterface
             $this->urlGenerator->generate('app_home'),
             RedirectResponse::HTTP_SEE_OTHER
         );
-        
+
         $event->setResponse($response);
     }
 }

@@ -21,7 +21,7 @@ class IndexController extends AbstractController
 
     public function __construct(
         private readonly UserService $userService
-    ) {
+    ){
     }
 
     #[Route('/users/home', name: 'app_admin_users_index')]
@@ -81,7 +81,7 @@ class IndexController extends AbstractController
         if (!$isVerified) {
             $token = null;
         }
-        
+
         $isDeleted = $this->validateCheckbox($request->request->get('isDeleted'));
 
         if ($isDeleted) {

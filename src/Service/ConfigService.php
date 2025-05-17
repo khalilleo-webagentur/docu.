@@ -12,7 +12,7 @@ final readonly class ConfigService
     public function __construct(
         private ContainerInterface $container,
         private MonologService     $monolog
-    ) {
+    ){
     }
 
     public function getParameter(string $key): string

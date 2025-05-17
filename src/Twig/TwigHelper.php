@@ -15,9 +15,9 @@ class TwigHelper extends AbstractExtension
 {
     public function __construct(
         private readonly ConfigService $configService
-    ) {
+    ){
     }
-    
+
     public function getFunctions(): array
     {
         return [
@@ -52,7 +52,7 @@ class TwigHelper extends AbstractExtension
             $xUnits = ['K+', 'M+', 'B+', 'T+'];
             $xCountUnits = count($xArray) - 1;
             $xDisplay = $x;
-            $xDisplay = $xArray[0] . ((int) $xArray[1][0] !== 0 ? '.' . $xArray[1][0] : '');
+            $xDisplay = $xArray[0] . ((int)$xArray[1][0] !== 0 ? '.' . $xArray[1][0] : '');
             $xDisplay .= $xUnits[$xCountUnits - 1];
 
             return $xDisplay;

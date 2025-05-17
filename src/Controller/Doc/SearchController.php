@@ -17,7 +17,7 @@ class SearchController extends AbstractController
 
     public function __construct(
         private readonly CategoryService $categoryService
-    ) {
+    ){
     }
 
     #[Route('/g2p0n2x3/q', name: 'app_doc_search_q', methods: 'POST')]

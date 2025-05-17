@@ -24,10 +24,10 @@ class UpdateEmailController extends AbstractController
     private const APP_AUTH = 'app_auth';
 
     public function __construct(
-        private readonly UserService $userService,
-        private readonly TempUserService $tempUserService,
+        private readonly UserService           $userService,
+        private readonly TempUserService       $tempUserService,
         private readonly TokenGeneratorService $tokenGeneratorService
-    ) {
+    ){
     }
 
     #[Route('/profile/personal-data/u9k0d6bk7gh6dba8/change-email', name: 'app_profile_personal_data_email_store', methods: 'POST')]
@@ -88,7 +88,7 @@ class UpdateEmailController extends AbstractController
                 $user
                     ->setEmail($newEmail)
                     ->setPassword($this->userService->encodePassword($newEmail))
-                );
+            );
             $this->tempUserService->delete($tempUser);
             $this->addFlash('success', sprintf('Your email has been updated. Login with your new Email [%s]', $newEmail));
             return $this->redirectToRoute(self::APP_AUTH);

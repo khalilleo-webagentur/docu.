@@ -12,7 +12,7 @@ final readonly class TempUserService
 {
     public function __construct(
         private TempUserRepository $tempUserRepository,
-    ) {
+    ){
     }
 
     public function getById(int $id): ?TempUser

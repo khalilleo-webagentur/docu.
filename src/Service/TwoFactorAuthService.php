@@ -10,7 +10,7 @@ final class TwoFactorAuthService
 {
     public function __construct(
         // public readonly SessionInterface $session,
-    ) {
+    ){
     }
 
     // public function setCurrentUserSession(): void

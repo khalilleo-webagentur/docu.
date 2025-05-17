@@ -21,7 +21,7 @@ class ContactUsController extends AbstractController
 
     public function __construct(
         private readonly MonologService $monolog
-    ) {
+    ){
     }
 
     #[Route('/contact-us/s3f2y1l5w8e7d2l5', name: 'app_contact_us_index')]

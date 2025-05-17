@@ -12,7 +12,7 @@ final readonly class PersonalDataExport
 {
     public function __construct(
         private UserService $userService,
-    ) {
+    ){
     }
 
     public function asJson(UserInterface|User $user): bool|string

@@ -13,7 +13,7 @@ final readonly class UserService
 {
     public function __construct(
         private UserRepository $userRepository,
-    ) {
+    ){
     }
 
     public function getById(int $id): ?User

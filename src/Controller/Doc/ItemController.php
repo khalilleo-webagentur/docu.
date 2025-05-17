@@ -18,7 +18,7 @@ class ItemController extends AbstractController
     public function __construct(
         private readonly CategoryService $categoryService,
         private readonly ItemService     $itemService
-    ) {
+    ){
     }
 
     #[Route('/i/{slug}', name: 'app_doc_item_name_index')]

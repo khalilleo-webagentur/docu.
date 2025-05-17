@@ -26,7 +26,8 @@ class DummyCategoriesCommand extends Command
 
     public function __construct(
         private readonly CategoryService $categoryService
-    ) {
+    )
+    {
         parent::__construct();
     }
 

@@ -25,9 +25,9 @@ class AuthenticateController extends AbstractController
     private const PROFILE_ROUTE = 'app_profile';
 
     public function __construct(
-        private readonly UserService $userService,
+        private readonly UserService           $userService,
         private readonly TokenGeneratorService $tokenGeneratorService
-    ) {
+    ){
     }
 
     #[Route('/auth/e1j4c3o7l9i5x9k6', name: 'app_auth')]

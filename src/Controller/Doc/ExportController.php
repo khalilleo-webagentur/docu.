@@ -17,7 +17,7 @@ class ExportController extends AbstractController
 
     public function __construct(
         private readonly CategoryService $categoryService
-    ) {
+    ){
     }
 
     #[Route('doc/m3pun6y9/export', name: 'app_doc_export_item_as_pdf')]

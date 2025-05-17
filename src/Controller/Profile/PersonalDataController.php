@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/profile/personal-data/u7k0s9bkngf6dba7')]
+#[Route('/profile/personal-data/u7k0s9b5ngf6dba7')]
 class PersonalDataController extends AbstractController
 {
     use FormValidationTrait;
@@ -23,7 +23,7 @@ class PersonalDataController extends AbstractController
 
     public function __construct(
         private readonly UserService $userService
-    ) {
+    ){
     }
 
     #[Route('/change-username', name: 'app_profile_personal_data_username_store', methods: 'POST')]

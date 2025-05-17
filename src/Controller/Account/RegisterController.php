@@ -26,9 +26,9 @@ class RegisterController extends AbstractController
     private const AUTH_ROUTE = 'app_auth';
 
     public function __construct(
-        private readonly UserService $userService,
+        private readonly UserService           $userService,
         private readonly TokenGeneratorService $tokenGeneratorService
-    ) {
+    ){
     }
 
     #[Route('/sign-up/q6u3f4y8e7j3z7y6', name: 'app_register')]
