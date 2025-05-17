@@ -1,4 +1,4 @@
-# Docu.
+# Doc. Online
 
 What you need to get your documentation online.
 

@@ -8,10 +8,10 @@ use App\Entity\TempUser;
 use App\Repository\TempUserRepository;
 use DateTime;
 
-final class TempUserService
+final readonly class TempUserService
 {
     public function __construct(
-        private readonly TempUserRepository $tempUserRepository,
+        private TempUserRepository $tempUserRepository,
     ) {
     }
 

@@ -1,0 +1,83 @@
+{% extends 'admin/layout/base.html.twig' %}
+
+{% block title %} Dashboard :: Add new Item {% endblock %}
+
+{% block body %}
+
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4 class="m-0 text-dark">Add new Item</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <a href="{{path('app_admin_doc_items_index')}}" class="text-secondary">
+                            Close <span class="fa fa-window-close"></span>
+                        </a>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="{{path('app_admin_doc_item_save')}}" method="post">
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="V9xO3aD7v" class="form-label">Title <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="V9xO3aD7v" placeholder="Type Title"
+                                        name="slug" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="mb-3">
+                                    <label for="iwO7nM4yT4bG2sO5i">Category <span class="text-danger">*</span></label>
+                                    <select class="form-control" id="iwO7nM4yT4bG2sO5i" name="categoryId" required>
+                                        <option value="0" selected disabled>---</option>
+                                        {% for key, row in categories %}
+                                        <option value="{{ row.id }}">{{ row.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="mb-3">
+                                    <label for="vwO7nM4yT4bG2sO5i">Read Time <span class="text-danger">*</span></label>
+                                    <select class="form-control" id="vwO7nM4yT4bG2sO5i" name="readTime" required>
+                                        <option value="0" selected disabled>---</option>
+                                        {% for key, readTime in readTimes %}
+                                        <option value="{{ readTime}}">{{ readTime }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div id="editor" class="bg-white"></div>
+                            <input type="hidden" name="content" id="content">
+                        </div>
+
+                        <div class="my-3">
+                            <button class="btn btn-success" id="formSave">
+                                Add Item <span class="fa fa-check-circle fa-sm pl-1"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+{% endblock %}

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Command\Docs;
 
-use App\Entity\Docu\DocuItem;
-use App\Service\Docs\CatigoryService;
-use App\Service\Docs\ItemService;
+use App\Entity\Doc\Item;
+use App\Service\Doc\CategoryService;
+use App\Service\Doc\ItemService;
 use Faker\Factory;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -26,8 +26,8 @@ class DummyItemsCommand extends Command
     public const SUCCESS = 1;
 
     public function __construct(
-        private readonly CatigoryService $catigoryService,
-        private readonly ItemService $itemService
+        private readonly CategoryService $categoryService,
+        private readonly ItemService     $itemService
     ) {
         parent::__construct();
     }
@@ -38,17 +38,17 @@ class DummyItemsCommand extends Command
 
         $faker = Factory::create();
 
-        foreach ($this->catigoryService->getAll() as $catigory) {
+        foreach ($this->categoryService->getAll() as $category) {
 
             $i = 0;
 
             while ($i <= 3) {
 
-                $item = new DocuItem();
+                $item = new Item();
 
                 $this->itemService->save(
                     $item
-                        ->setCatigory($catigory)
+                        ->setCategory($category)
                         ->setSlug($faker->jobTitle())
                         ->setContent($faker->sentence(500))
                         ->setReadTime($faker->numberBetween(1,12) . ' min.')

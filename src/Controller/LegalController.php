@@ -29,7 +29,7 @@ class LegalController extends AbstractController
         $plz = $this->configService->getParameter('addressPlz');
         $city = $this->configService->getParameter('addressCity');
         $country = $this->configService->getParameter('addressCountry');
-        $phonenumber = $this->configService->getParameter('phoneNumber');
+        $phoneNumber = $this->configService->getParameter('phoneNumber');
         $email = $this->configService->getParameter('legalEmail');
 
         return $this->render('static/privacy-policy.html.twig',  [
@@ -37,7 +37,7 @@ class LegalController extends AbstractController
             'plz' => $plz,
             'city' => $city,
             'country' => $country,
-            'phoneNumber' => $phonenumber,
+            'phoneNumber' => $phoneNumber,
             'email' => $email,
         ]);
     }

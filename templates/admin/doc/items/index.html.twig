@@ -1,6 +1,6 @@
 {% extends 'admin/layout/base.html.twig' %}
 
-{% block title %} Dashboard Users {% endblock %}
+{% block title %} Dashboard Items {% endblock %}
 
 {% block body %}
 
@@ -10,10 +10,17 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <h5 class="m-0 text-dark mt-1">Users</h5>
+                    <h5 class="m-0 text-dark mt-1">Items</h5>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right"></ol>
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="text-secondary pointer">
+                            <a href="{{path('app_admin_doc_item_new')}}" class="text-secondary">
+                                New <span class="fa fa-plus fa-sm"></span>
+                            </a>
+                        </li>
+                        <li class="text-secondary pointer">Infos <span class="fa fa-info-circle fa-sm"></span></li>
+                    </ol>
                 </div>
             </div>
         </div>
@@ -24,7 +31,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    {% include 'admin/users/partial/table_content.html.twig' %}
+                    {% include 'admin/doc/items/partial/table_content.html.twig' %}
                 </div>
             </div>
 

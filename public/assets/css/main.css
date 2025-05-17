@@ -57,7 +57,6 @@ input[type="color"]:focus,
 .form-select:focus,
 .form-control .btn:active,
 .btn:focus .uneditable-input:focus {
-    border-color: none;
     outline: 0 none;
     border: 1px solid #ffc107 !important;
     box-shadow: none !important;
@@ -83,7 +82,7 @@ input[type="color"]:focus,
     display: none;
 }
 
-.a-primaray-hover:hover {
+.a-primary-hover:hover {
     color: rgb(79, 145, 243) !important;
 }
 

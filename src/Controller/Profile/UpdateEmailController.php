@@ -30,7 +30,7 @@ class UpdateEmailController extends AbstractController
     ) {
     }
 
-    #[Route('/profile/personal-data/u9k0d6bkngh6dba8/change-email', name: 'app_profile_personal_data_email_store', methods: 'POST')]
+    #[Route('/profile/personal-data/u9k0d6bk7gh6dba8/change-email', name: 'app_profile_personal_data_email_store', methods: 'POST')]
     public function storeEmail(Request $request, ChangeEmailUserMail $changeEmailUserMail): Response
     {
         $user = $this->getUser();
@@ -66,13 +66,13 @@ class UpdateEmailController extends AbstractController
 
         $changeEmailUserMail->send($user->getName(), $user->getUserIdentifier(), $token);
 
-        $this->addFlash('notice', sprintf('An email has been sent to your Email [%s]. Verifiy your email now.', $user->getUserIdentifier()));
+        $this->addFlash('notice', sprintf('An email has been sent to your Email [%s]. Verify your email now.', $user->getUserIdentifier()));
 
         return $this->redirectToRoute(self::APP_PROFILE);
     }
 
     #[Route('/p/u/verify/{token}', name: 'app_profile_personal_data_email_verify')]
-    public function verifiyEmail(?string $token): RedirectResponse
+    public function VerifyEmail(?string $token): RedirectResponse
     {
         $token = $this->validate($token);
 
