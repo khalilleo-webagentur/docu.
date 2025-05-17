@@ -1,26 +1,26 @@
 {% if count(categories) > 0 %}
 
-{% for row in categories %}
+    {% for row in categories %}
 
-{% if count(row.items) > 0 %}
-<p class="mb-0 pt-1 fs-15">
-    <b class="{{row.name == category.name ? 'text-white-75' : 'text-secondary'}}"
-        id="{{hash(category.name)}}">
-        <span class="bi bi-dash text-white-75"></span> {{row.name}}
-    </b>
-</p>
-{% endif %}
+        {% if count(row.items) > 0 %}
+            <p class="mb-0 pt-1 fs-15">
+                <b class="{{ row.name == category.name ? 'text-white-75' : 'text-secondary' }}"
+                   id="{{ hash(category.name) }}">
+                    <span class="bi bi-dash text-white-75"></span> {{ row.name }}
+                </b>
+            </p>
+        {% endif %}
 
-{% for item in row.items %}
+        {% for item in row.items %}
 
-{% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_doc_item_name_index', {slug:slug(item.slug)}) %}
+            {% set _currentTab = app.request.getSchemeAndHttpHost() ~ path('app_doc_item_name_index', {slug:slug(item.slug)}) %}
 
-<a href="{{path('app_doc_item_name_index', {slug:slug(item.slug)})}}#{{hash(category.name)}}"
-    class="text-decoration-none a-primary-hover fs-15 ms-2 {{_uri == _currentTab or item.slug == slug ? 'text-primary' : 'text-secondary'}} fs-14">
-    <span class="bi {{_uri == _currentTab or item.slug == slug ? 'bi-record-fill' : 'bi-record'}} pe-1 ps-3"></span> {{item.slug}}
-</a><br>
-{% endfor %}
+            <a href="{{ path('app_doc_item_name_index', {slug:slug(item.slug)}) }}#{{ hash(category.name) }}"
+               class="text-decoration-none a-primary-hover fs-15 ms-2 {{ _uri == _currentTab or item.slug == slug ? 'text-primary' : 'text-secondary' }} fs-14">
+                <span class="bi {{ _uri == _currentTab or item.slug == slug ? 'bi-record-fill' : 'bi-record' }} pe-1 ps-3"></span> {{ item.slug }}
+            </a><br>
+        {% endfor %}
 
-{% endfor %}
+    {% endfor %}
 
 {% endif %}

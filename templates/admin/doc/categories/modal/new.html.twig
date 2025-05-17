@@ -1,6 +1,6 @@
 <div class="modal fade" id="newModel" tabindex="-1" role="dialog" aria-labelledby="newModelTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <form action="{{path('app_admin_doc_category_new')}}" , method="post">
+        <form action="{{ path('app_admin_doc_category_new') }}" , method="post">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
             <div class="modal-content">
                 <div class="modal-header">
@@ -15,13 +15,13 @@
                     <div class="mb-3">
                         <label for="g9xO3aD7v" class="form-label">Name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="g9xO3aD7v" placeholder="Type name" name="name"
-                            required autofocus>
+                               required autofocus>
                     </div>
                     <div class="mb-3">
                         <label for="9hV9xO3aD7v" class="form-label">Description <span
-                                class="text-danger">*</span></label>
+                                    class="text-danger">*</span></label>
                         <textarea type="text" class="form-control" id="9hV9xO3aD7v" placeholder="Type Description"
-                            rows="5" name="description"></textarea>
+                                  rows="5" name="description"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
