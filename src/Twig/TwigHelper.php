@@ -113,7 +113,7 @@ class TwigHelper extends AbstractExtension
         return $components ? implode(', ', $components) . ' ago' : 'just now';
     }
 
-    public function formatSizeUnits($bytes)
+    public function formatSizeUnits($bytes): string
     {
         if ($bytes >= 1073741824) {
             $bytes = number_format($bytes / 1073741824, 2) . ' GB';
