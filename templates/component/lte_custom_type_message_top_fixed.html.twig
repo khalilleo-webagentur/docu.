@@ -6,6 +6,7 @@
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <img src="{{ asset('assets/img/svg/exclamation-triangle.svg') }}" alt="Warning" width="14"
                          height="14"
+                         loading="lazy" decoding="async"
                          style="margin-top: -3px;">
                     <span class="text-16 pl-1">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -18,6 +19,7 @@
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <img src="{{ asset('assets/img/svg/exclamation-triangle.svg') }}" alt="Warning" width="14"
                          height="14"
+                         loading="lazy" decoding="async"
                          style="margin-top: -3px;">
                     <span class="text-16 pl-1">{{ message }}</span>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -29,7 +31,8 @@
             {# notice #}
             {% for message in app.flashes('notice') %}
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    <img src="{{ asset('assets/img/svg/exclamation-circle.svg') }}" alt="Warning" width="14" height="14"
+                    <img loading="lazy" decoding="async"
+                         src="{{ asset('assets/img/svg/exclamation-circle.svg') }}" alt="Warning" width="14" height="14"
                          style="margin-top: -3px;">
                     <span class="text-16 pl-1">{{ message }}</span>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -41,7 +44,8 @@
             {# success #}
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <img src="{{ asset('assets/img/svg/check2-circle.svg') }}" alt="Warning" width="14" height="14"
+                    <img loading="lazy" decoding="async"
+                         src="{{ asset('assets/img/svg/check2-circle.svg') }}" alt="Warning" width="14" height="14"
                          style="margin-top: -3px;">
                     <span class="text-16 pl-1">{{ message }}</span>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
